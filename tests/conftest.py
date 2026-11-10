@@ -21,6 +21,36 @@ def pytest_configure(config):
 # Data Fixtures
 # ============================================================================
 
+_ANNOY_PROBE = """
+import annoy
+index = annoy.AnnoyIndex(4, 'euclidean')
+for i in range(50):
+    index.add_item(i, [float(i), float(i % 7), float(i % 3), 1.0])
+index.build(5)
+print(len(index.get_nns_by_item(0, 10)))
+"""
+_annoy_probe_result = None
+
+
+def _skip_if_annoy_broken():
+    """Skip when the installed Annoy crashes or returns too few neighbors (cached)."""
+    global _annoy_probe_result
+    if _annoy_probe_result is None:
+        import subprocess
+        import sys
+        try:
+            r = subprocess.run([sys.executable, "-c", _ANNOY_PROBE],
+                               capture_output=True, text=True, timeout=60)
+            ok = r.returncode == 0 and r.stdout.strip() == "10"
+            _annoy_probe_result = "" if ok else (
+                f"exit code {r.returncode}, output {r.stdout.strip()!r}")
+        except subprocess.TimeoutExpired:
+            _annoy_probe_result = "timed out"
+    if _annoy_probe_result:
+        pytest.skip("Annoy is installed but broken in this environment "
+                    f"({_annoy_probe_result})")
+
+
 @pytest.fixture
 def random_seed() -> int:
     """Fixed random seed for reproducibility."""
@@ -215,12 +245,7 @@ def skip_without_annoy():
         import annoy
     except ImportError:
         pytest.skip("Annoy not installed")
-    # Below 3.13 a broken build does not crash, it returns too few neighbors
-    # (seen on GitHub's macos-15 runner with Python 3.12), so probe it once.
-    index = annoy.AnnoyIndex(4, 'euclidean')
-    for i in range(50):
-        index.add_item(i, [float(i), float(i % 7), float(i % 3), 1.0])
-    index.build(5)
-    if len(index.get_nns_by_item(0, 10)) < 10:
-        pytest.skip("Annoy is installed but returns too few neighbors in this "
-                    "environment (broken build)")
+    # Below 3.13 a broken build either returns too few neighbors (GitHub's macos-15
+    # runner, Python 3.12) or segfaults (same runner, Python 3.9 / 3.11). Probe it once
+    # in a child process, so a crash turns into a skip instead of killing pytest.
+    _skip_if_annoy_broken()

@@ -36,6 +36,8 @@ Installs and runs on every CPython from 3.9 to 3.14, checked automatically in CI
   3.10) printed about fifty spurious `RuntimeWarning: divide by zero / overflow / invalid value
   encountered in matmul` from scikit-learn's randomized PCA, although the result was exact.
   They are silenced around the PCA only; a non-finite PCA result now raises a clear error.
+- The Annoy self-check in the test suite runs in a child process: a broken Annoy build can
+  segfault (GitHub's macOS runner, Python 3.9 / 3.11), which killed the whole pytest run.
 - A test fixture used `@classmethod` under `@pytest.fixture`, which fails at collection on
   Python 3.9 (classmethods have no `__name__` before 3.10).
 
