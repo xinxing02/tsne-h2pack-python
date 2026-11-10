@@ -19,7 +19,7 @@ from tsne_h2pack import TSNE
 Y = TSNE(n_jobs=8).fit_transform(X)
 ```
 
-Wheels for Linux x86-64 and Apple Silicon macOS, Python 3.9–3.13.
+Wheels for Linux x86-64 and Apple Silicon macOS, Python 3.9–3.14.
 
 </div>
 <div class="split-figure" markdown>

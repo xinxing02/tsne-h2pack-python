@@ -259,4 +259,4 @@ If you encounter issues not covered here:
 ---
 
 **Last Updated**: November 2026
-**Version**: 3.3.0
+**Version**: 3.3.1

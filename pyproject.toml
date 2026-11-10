@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tsne-h2pack"
-version = "3.3.0"
+version = "3.3.1"
 description = "High-performance t-SNE with H2Pack acceleration (sklearn compatible, native builds)"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -26,6 +26,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: C",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
@@ -75,13 +76,16 @@ tsne_h2pack = ["_lib/*.so", "_lib/*.dylib"]
 # ---------------------------------------------------------------------------
 [tool.cibuildwheel]
 # Build wheels for every CPython that requires-python allows (3.9+); skip PyPy.
-build = "cp39-* cp310-* cp311-* cp312-* cp313-*"
+build = "cp39-* cp310-* cp311-* cp312-* cp313-* cp314-*"
 # Skip 32-bit and musllinux for now (limited demand, OpenBLAS install
 # is more involved on Alpine).
 skip = "*-win32 *-manylinux_i686 *musllinux*"
 
 # Run a smoke test against the installed wheel on every build.
 test-requires = "pytest pytest-timeout"
+# Test each wheel with the k-NN extra users install, so a dependency that resolves to a
+# broken version on one Python (pynndescent 0.7 with numba 0.60 on 3.9) fails the build.
+test-extras = ["pynndescent"]
 # Smoke test only: prove the wheel imports and the native backend
 # loads. The full pytest matrix runs separately in the Test
 # workflow (.github/workflows/test.yml) where it doesn't have to
@@ -99,6 +103,8 @@ test-command = [
     "python -c 'import tsne_h2pack; print(tsne_h2pack.__version__)'",
     "python -c 'from tsne_h2pack._backend import get_backend; b=get_backend(); assert b.is_available()'",
     "python -c 'import numpy as np; from tsne_h2pack import TSNE; Y=TSNE(n_components=2, perplexity=5, max_iter=50, knn_method=\"exact\", random_state=0).fit_transform(np.random.RandomState(0).randn(100, 10)); assert Y.shape==(100,2); print(\"fit_transform OK\")'",
+    # Defaults (pynndescent k-NN, PCA init) on 20K points: large enough for NN-descent, not brute force
+    "python -c 'import numpy as np; from tsne_h2pack import TSNE; Y=TSNE(max_iter=100, random_state=0).fit_transform(np.random.RandomState(0).randn(20000, 50)); assert Y.shape==(20000,2) and np.isfinite(Y).all(); print(\"defaults at 20K OK\")'",
 ]
 
 # ---- Linux ----

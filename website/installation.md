@@ -10,8 +10,8 @@ Binary wheels are published for:
 
 | Platform | Python | Notes |
 |---|---|---|
-| Linux x86-64 (manylinux) | CPython 3.9–3.13 | Recommended for production |
-| macOS 15+ on Apple Silicon | CPython 3.9–3.13 | Built with GCC and GNU OpenMP. On macOS 14, pip builds from source |
+| Linux x86-64 (manylinux) | CPython 3.9–3.14 | Recommended for production |
+| macOS 15+ on Apple Silicon | CPython 3.9–3.14 | Built with GCC and GNU OpenMP. On macOS 14, pip builds from source |
 
 Only these two platforms are supported. On any other platform pip falls back to the source distribution, and the build fails or is untested:
 

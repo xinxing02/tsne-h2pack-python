@@ -32,7 +32,7 @@ pip install tsne-h2pack
 ```
 
 Binary wheels are published for Linux x86-64 (manylinux) and macOS Apple Silicon
-(macOS 15+), CPython 3.9–3.13. On other platforms, including macOS 14, `pip` builds from the source
+(macOS 15+), CPython 3.9–3.14. On other platforms, including macOS 14, `pip` builds from the source
 distribution, which needs a C compiler and OpenBLAS — see [Prerequisites](#prerequisites).
 
 To install from a source checkout:
@@ -312,5 +312,5 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-**Version**: 3.3.0
+**Version**: 3.3.1
 **Status**: Beta; released on PyPI

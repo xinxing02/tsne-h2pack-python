@@ -399,7 +399,15 @@ class TSNE:
             from sklearn.decomposition import PCA
             pca = PCA(n_components=self.n_components, svd_solver='randomized',
                       random_state=self.random_state)
-            Y = pca.fit_transform(np.asarray(X, dtype=np.float64))
+            # NumPy 2.0-2.2 on macOS (the newest NumPy for Python 3.9 / 3.10) raises
+            # spurious divide/overflow/invalid warnings from the matmuls inside
+            # scikit-learn's randomized SVD even when the result is exact. Silence
+            # them here only, and check the result explicitly instead.
+            with np.errstate(divide='ignore', over='ignore', invalid='ignore'):
+                Y = pca.fit_transform(np.asarray(X, dtype=np.float64))
+            if not np.isfinite(Y).all():
+                raise ValueError("init='pca' failed: the PCA of X is not finite; "
+                                 "check X for inf/NaN or pass init='random'")
             std = np.std(Y[:, 0])
             if not np.isfinite(std) or std == 0:
                 raise ValueError("init='pca' failed: X has no variance along "

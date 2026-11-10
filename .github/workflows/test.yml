@@ -14,10 +14,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-15]
-        python-version: ['3.10', '3.12']
-        # macos-15 = Apple Silicon (macos-14 was retired on 2026-11-02). Older Pythons are exercised on the
-        # wheel-build job; here we run a small matrix per OS to catch
-        # platform-specific regressions without a full 6x2 grid.
+        # Every CPython the package supports (requires-python >= 3.9). Dependency versions
+        # differ per Python (3.9 tops out at numpy 2.0 / numba 0.60), so each one is tested.
+        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13', '3.14']
+        # macos-15 = Apple Silicon (macos-14 was retired on 2026-11-02).
 
     steps:
       - uses: actions/checkout@v4
@@ -46,13 +46,21 @@ jobs:
       - name: Install package + test deps
         run: |
           python -m pip install --upgrade pip
-          pip install -e '.[knn]'
+          # The pynndescent extra, as users install it: its version pin differs per Python.
+          pip install -e '.[pynndescent]'
           pip install pytest pytest-timeout
+          # Optional k-NN backends: their tests skip when a wheel is missing for this Python.
+          pip install faiss-cpu || echo "faiss-cpu not available for this Python"
+          pip install annoy || echo "annoy not available for this Python"
 
       - name: Verify backend
         run: |
           python -c "import tsne_h2pack; print('Version:', tsne_h2pack.__version__)"
           python -c "from tsne_h2pack._backend import get_backend; b=get_backend(); assert b.is_available(), 'native backend not available'; print('Backend OK')"
+
+      - name: Defaults on 20K points (PyNNDescent NN-descent path, PCA init)
+        run: |
+          python -c "import numpy as np; from tsne_h2pack import TSNE; Y = TSNE(max_iter=100, random_state=0).fit_transform(np.random.RandomState(0).randn(20000, 50)); assert Y.shape == (20000, 2) and np.isfinite(Y).all(); print('defaults at 20K OK')"
 
       - name: Run pytest
         # Skip slow tests in the per-PR Test workflow. The 10K-sample

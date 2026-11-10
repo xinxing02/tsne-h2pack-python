@@ -8,10 +8,10 @@ you don't build release artifacts by hand.
 
 - **PyPI**: https://pypi.org/project/tsne-h2pack/ — every release since 3.1.0 is built and
   uploaded by CI from a `v*` tag (trusted publishing, no API token).
-- **Artifacts per release** (11 files):
+- **Artifacts per release** (13 files):
   - sdist (~300 KB — binaries are excluded by `MANIFEST.in`)
-  - manylinux x86-64 wheels for cp39–cp313
-  - macOS arm64 wheels (`macosx_15_0_arm64`) for cp39–cp313
+  - manylinux x86-64 wheels for cp39–cp314
+  - macOS arm64 wheels (`macosx_15_0_arm64`) for cp39–cp314
 - **H2Pack** is a submodule pinned to the `tsne-h2pack` branch of the fork
   `xinxing02/H2Pack`. The commit it points at must be pushed there before CI can check it out.
 
@@ -112,7 +112,7 @@ git push origin vX.Y.Z
 
 The `wheels.yml` run for the tag builds every wheel again and, once all matrix jobs are
 green, the `publish` job uploads sdist + wheels to PyPI. Watch it under **Actions**;
-then check https://pypi.org/project/tsne-h2pack/ lists 11 files (10 wheels + sdist).
+then check https://pypi.org/project/tsne-h2pack/ lists 13 files (12 wheels + sdist).
 
 Smoke test against a TestPyPI install (dependencies come from real PyPI):
 ```bash

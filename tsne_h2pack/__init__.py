@@ -17,7 +17,7 @@ Example:
     >>> Y = tsne.fit_transform(X)
 """
 
-__version__ = "3.3.0"
+__version__ = "3.3.1"
 
 # On macOS, our wheel ships both libgomp (used by Homebrew GCC for our
 # C extension and H2Pack) and libomp (a transitive dep of Homebrew's

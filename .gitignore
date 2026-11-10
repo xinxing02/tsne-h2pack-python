@@ -71,7 +71,7 @@ profiling_results/
 .dockerignore
 
 # Project specific
-/data/
+/data
 *.npy
 *.npz
 

@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.3.1] - 2026-11-09
+
+Installs and runs on every CPython from 3.9 to 3.14, checked automatically in CI.
+
+### Added
+
+- Wheels for **Python 3.14** (Linux x86-64 and macOS arm64).
+- CI runs the test suite on Python 3.9, 3.10, 3.11, 3.12, 3.13 and 3.14 on Linux and macOS
+  (was 3.10 and 3.12), installs the `pynndescent` extra the way users do, and runs the
+  defaults on 20,000 points, large enough to take PyNNDescent's NN-descent path. Every wheel
+  is tested the same way after it is built.
+
 ### Changed
 
 - **Python 3.9 or newer is required** (`requires-python = ">=3.9"`; was 3.8). Python 3.8 has
@@ -20,6 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   fails inside numba (`Cannot add edge as dest node ... not in nodes`) with numba 0.60, the
   newest numba for 3.9, which broke the default `knn_method='pynndescent'`. Python 3.10+ is
   unaffected (numba 0.68).
+- With the default `init='pca'`, NumPy 2.0-2.2 on macOS (the newest NumPy for Python 3.9 and
+  3.10) printed about fifty spurious `RuntimeWarning: divide by zero / overflow / invalid value
+  encountered in matmul` from scikit-learn's randomized PCA, although the result was exact.
+  They are silenced around the PCA only; a non-finite PCA result now raises a clear error.
 - A test fixture used `@classmethod` under `@pytest.fixture`, which fails at collection on
   Python 3.9 (classmethods have no `__name__` before 3.10).
 
@@ -455,6 +471,7 @@ tsne = TSNE(knn_method='exact', n_jobs=8)
 
 ## Version History Summary
 
+- **v3.3.1** (2026-11-09): Python 3.9-3.14 tested in CI, 3.14 wheels, Python 3.9 k-NN fix
 - **v3.3.0** (2026-11-05): PCA initialization by default, benchmarks rerun on an Apple M5 Max, macOS wheels need macOS 15
 - **v3.2.0** (2026-10-07): Per-dimension H2 defaults, 3D speedups
 - **v3.1.1** (2026-09-20): Fix for the PyNNDescent self-neighbor bug of 3.1.0
