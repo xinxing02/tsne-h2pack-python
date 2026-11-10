@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Xin Xing" /><link rel="canonical" href="https://xinxing02.github.io/tsne-h2pack-python/benchmarks/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Benchmarks - tsne-h2pack</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Benchmarks";
+        var mkdocs_page_input_path = "benchmarks.md";
+        var mkdocs_page_url = "/tsne-h2pack-python/benchmarks/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> tsne-h2pack
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="..#the-idea-in-one-picture">The idea in one picture</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="..#time-grows-roughly-linearly-with-n">Time grows roughly linearly with N</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="..#explore-the-documentation">Explore the documentation</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#from-pypi">From PyPI</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#optional-k-nn-backends">Optional k-NN backends</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#building-from-source">Building from source</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#check-the-installation">Check the installation</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick start</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../quickstart/#differences-from-scikit-learn">Differences from scikit-learn</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../quickstart/#a-real-dataset">A real dataset</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../quickstart/#what-to-read-next">What to read next</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../user-guide/">How to use tsne-h2pack</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#threads">Threads</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#large-datasets">Large datasets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#perplexity">Perplexity</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#choosing-a-k-nn-method">Choosing a k-NN method</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#precomputed-k-nn-graphs">Precomputed k-NN graphs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#3d-embeddings">3D embeddings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#h2-parameters">H² parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#exact-repulsion">Exact repulsion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#learning-rate">Learning rate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#reproducibility">Reproducibility</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#profiling">Profiling</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technical/algorithm/">How it works</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#the-t-sne-gradient">The t-SNE gradient</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#one-kernel-gives-both-force-and-normalization">One kernel gives both force and normalization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#h2-matrices">H² matrices</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#reusing-the-repulsive-force">Reusing the repulsive force</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#comparison-with-other-methods">Comparison with other methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#the-rest-of-the-pipeline">The rest of the pipeline</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technical/accuracy/">Accuracy and reproducibility</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/accuracy/#why-a-loose-tolerance-is-enough">Why a loose tolerance is enough</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/accuracy/#how-quality-is-measured">How quality is measured</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/accuracy/#reproducibility">Reproducibility</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Benchmarks</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2d-scaling-with-data-size-and-threads">2D: scaling with data size and threads</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#inside-the-optimization">Inside the optimization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3d-scaling-with-data-size-and-threads">3D: scaling with data size and threads</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#comparison-to-other-t-sne-implementations">Comparison to other t-SNE implementations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#comparison-to-umap">Comparison to UMAP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#caveats">Caveats</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reproducing-the-benchmarks">Reproducing the benchmarks</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../api/">API reference</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../api/#tsne_h2pack.TSNE">TSNE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../api/#tsne_h2pack.TSNE.fit_transform">fit_transform</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">More</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../troubleshooting/#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../troubleshooting/#runtime">Runtime</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#unreleased">[Unreleased]</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#331-2026-11-09">[3.3.1] - 2026-11-09</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#added">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#fixed">Fixed</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#330-2026-11-05">[3.3.0] - 2026-11-05</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#added_1">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed_1">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#benchmarks">Benchmarks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#build">Build</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#repository">Repository</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#320-2026-10-07">[3.2.0] - 2026-10-07</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed_2">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#performance">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#benchmarks_1">Benchmarks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#311-2026-09-20">[3.1.1] - 2026-09-20</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#fixed_1">Fixed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#performance_1">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#benchmarks_2">Benchmarks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#310-2026-09-20">[3.1.0] - 2026-09-20</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#fixed_2">Fixed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#packaging">Packaging</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed_3">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#performance_2">Performance</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#301-2026-07-06">[3.0.1] - 2026-07-06</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#added_2">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed_4">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#fixed_3">Fixed</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#300-2026-02-11-internal">[3.0.0] - 2026-02-11 (internal)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#major-changes-breaking-release">🚀 Major Changes - Breaking Release</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#technical-improvements">🔧 Technical Improvements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#distribution">📦 Distribution</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#testing">🧪 Testing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#documentation">📚 Documentation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#migration-from-v2x">🔄 Migration from v2.x</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#known-issues">⚠️ Known Issues</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#requirements">🎯 Requirements</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#200-2026-02-01">[2.0.0] - 2026-02-01</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed-unified-k-nn-interface">Changed - Unified k-NN Interface</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#added_3">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#files">Files</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#100-initial-release">[1.0.0] - Initial Release</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#features">Features</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#version-history-summary">Version History Summary</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../citing/">Citing</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../citing/#license">License</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">tsne-h2pack</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+      <li class="breadcrumb-item active">Benchmarks</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="benchmarks">Benchmarks<a class="headerlink" href="#benchmarks" title="Permanent link">¶</a></h1>
+<p>All numbers come from the project's benchmark suite, run in November 2026 on an Apple M5 Max (12 performance cores, 6 efficiency cores, 36 GB) under macOS 27.2 with tsne-h2pack 3.2.0. Thread counts are 1, 4, 8 and 12. Times are in seconds.</p>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Data.</strong> The 10x Genomics mouse brain cells, 50 PCA components, subsampled to 50K–1M points.</li>
+<li><strong>Pipeline.</strong> PyNNDescent k-NN graph with k = 90, perplexity 30, random initialization, 1000 iterations of which the first 250 use early exaggeration 12, and <code>learning_rate="auto"</code>.</li>
+<li><strong>Defaults only.</strong> One configuration for every size, with no per-size tuning.</li>
+<li><strong>Quality.</strong> KL divergence against a common P, and the fraction of each point's 10 nearest neighbors preserved in the embedding.</li>
+</ul>
+<h2 id="2d-scaling-with-data-size-and-threads">2D: scaling with data size and threads<a class="headerlink" href="#2d-scaling-with-data-size-and-threads" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Points</th>
+<th>Optimization, 1 thread (s)</th>
+<th>4 threads (s)</th>
+<th>8 threads (s)</th>
+<th>12 threads (s)</th>
+<th>Speedup, 1 → 12 threads</th>
+<th>End to end, 12 threads (s)</th>
+<th>Peak memory (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50K</td>
+<td>8.2</td>
+<td>2.7</td>
+<td>2.2</td>
+<td>2.2</td>
+<td>3.8×</td>
+<td>4.1</td>
+<td>1.4</td>
+</tr>
+<tr>
+<td>100K</td>
+<td>18.2</td>
+<td>5.4</td>
+<td>4.0</td>
+<td>3.5</td>
+<td>5.2×</td>
+<td>7.5</td>
+<td>2.2</td>
+</tr>
+<tr>
+<td>250K</td>
+<td>42.2</td>
+<td>14.0</td>
+<td>9.4</td>
+<td>7.7</td>
+<td>5.5×</td>
+<td>18.1</td>
+<td>4.2</td>
+</tr>
+<tr>
+<td>500K</td>
+<td>85.8</td>
+<td>27.9</td>
+<td>18.2</td>
+<td>15.1</td>
+<td>5.7×</td>
+<td>36.3</td>
+<td>9.1</td>
+</tr>
+<tr>
+<td>1M</td>
+<td>171.8</td>
+<td>56.8</td>
+<td>37.5</td>
+<td>27.8</td>
+<td>6.2×</td>
+<td>69.3</td>
+<td>15.7</td>
+</tr>
+</tbody>
+</table>
+<p>Times are means of 3 runs (2 runs at 500K, 1 run at 1M). Optimization time grows roughly linearly with N: doubling the data roughly doubles the time. Four threads give a 3.0–3.4× speedup at every size. Beyond that, parallel efficiency improves with size, because larger problems give each thread more work per synchronization; at 50K points the eight-to-twelve-thread step gains nothing.</p>
+<p>"End to end" includes the k-NN search and the P matrix. At 1M points on 12 threads it splits into 35 s for the k-NN graph, 7 s for P and setup, and 28 s for the optimization. Once the optimizer is this fast, the neighbor search is the largest cost.</p>
+<h3 id="inside-the-optimization">Inside the optimization<a class="headerlink" href="#inside-the-optimization" title="Permanent link">¶</a></h3>
+<p>Share of the 2D optimization time on 12 threads:</p>
+<table>
+<thead>
+<tr>
+<th>Points</th>
+<th>Attractive forces</th>
+<th>H² rebuild</th>
+<th>H² product</th>
+<th>Other</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50K</td>
+<td>20%</td>
+<td>37%</td>
+<td>31%</td>
+<td>13%</td>
+</tr>
+<tr>
+<td>250K</td>
+<td>22%</td>
+<td>39%</td>
+<td>30%</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>1M</td>
+<td>28%</td>
+<td>38%</td>
+<td>30%</td>
+<td>3%</td>
+</tr>
+</tbody>
+</table>
+<p>The H² matrix is rebuilt every third iteration and multiplied once per rebuild. Together these take about two thirds of the time. See <a href="../technical/algorithm/">How it works</a> for what each part does.</p>
+<h2 id="3d-scaling-with-data-size-and-threads">3D: scaling with data size and threads<a class="headerlink" href="#3d-scaling-with-data-size-and-threads" title="Permanent link">¶</a></h2>
+<p>tsne-h2pack runs unchanged with <code>n_components=3</code>, using the 3D default <code>h2_tol=3e-2</code>. Each 3D size was run once.</p>
+<table>
+<thead>
+<tr>
+<th>Points</th>
+<th>Optimization, 1 thread (s)</th>
+<th>4 threads (s)</th>
+<th>8 threads (s)</th>
+<th>12 threads (s)</th>
+<th>Speedup, 1 → 12 threads</th>
+<th>End to end, 12 threads (s)</th>
+<th>Peak memory (GB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50K</td>
+<td>54.8</td>
+<td>16.4</td>
+<td>9.1</td>
+<td>7.4</td>
+<td>7.4×</td>
+<td>9.3</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>100K</td>
+<td>178.6</td>
+<td>42.1</td>
+<td>22.9</td>
+<td>17.6</td>
+<td>10.2×</td>
+<td>21.7</td>
+<td>2.3</td>
+</tr>
+<tr>
+<td>250K</td>
+<td>288.8</td>
+<td>86.4</td>
+<td>49.5</td>
+<td>39.3</td>
+<td>7.4×</td>
+<td>49.8</td>
+<td>5.1</td>
+</tr>
+<tr>
+<td>500K</td>
+<td>930.0</td>
+<td>263.7</td>
+<td>146.4</td>
+<td>106.6</td>
+<td>8.7×</td>
+<td>127.4</td>
+<td>9.5</td>
+</tr>
+<tr>
+<td>1M</td>
+<td>1273.1</td>
+<td>361.7</td>
+<td>219.3</td>
+<td>172.4</td>
+<td>7.4×</td>
+<td>214.5</td>
+<td>16.3</td>
+</tr>
+</tbody>
+</table>
+<p>3D costs 3–7× as much as 2D at the same N on 12 threads. The kernel's numerical rank is higher in 3D, about 40 at the default tolerance against about 10–17 in 2D. The 3D times are less regular in N than the 2D ones: the attractive-force pass costs about twice as much per point at 100K and 500K as at the neighboring sizes, at every thread count. Thread scaling is better than in 2D because the H² rebuild, the largest part, parallelizes well.</p>
+<p>FFT-accelerated t-SNE does not support 3D, so other libraries fall back to Barnes-Hut trees there. In the same suite, their optimization took about 5–10× longer than tsne-h2pack's on 4 threads, 8–19× longer on 8 and 9–16× longer on 12, and tsne-h2pack's embeddings had lower KL divergence and better neighbor preservation at every size.</p>
+<h2 id="comparison-to-other-t-sne-implementations">Comparison to other t-SNE implementations<a class="headerlink" href="#comparison-to-other-t-sne-implementations" title="Permanent link">¶</a></h2>
+<p>To compare gradient methods fairly, openTSNE and FIt-SNE were given the <strong>same k-NN graph and the same P</strong> as tsne-h2pack, so only the optimization differs. Each library used its own default learning-rate rule.</p>
+<p><img alt="Optimization time against data size" src="../assets/opt_time_2d.png" /></p>
+<p class="figure-caption">2D optimization time in seconds, on log scales, for 1, 4, 8 and 12 threads. UMAP is shown for reference; it optimizes a different objective.</p>
+
+<p>2D optimization time on 12 threads:</p>
+<table>
+<thead>
+<tr>
+<th>Points</th>
+<th>tsne-h2pack (s)</th>
+<th>FIt-SNE (s)</th>
+<th>openTSNE (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50K</td>
+<td>2.2</td>
+<td>25.1</td>
+<td>57.3</td>
+</tr>
+<tr>
+<td>250K</td>
+<td>7.7</td>
+<td>45.3</td>
+<td>213.9</td>
+</tr>
+<tr>
+<td>1M</td>
+<td>27.8</td>
+<td>130.8</td>
+<td>800.3</td>
+</tr>
+</tbody>
+</table>
+<p>The three t-SNE embeddings reach matching quality at every size: KL within 2.5% and neighbor preservation within 0.014 of the best of the three. openTSNE's macOS wheel is built without OpenMP, so its times do not change with the thread count on a Mac.</p>
+<h2 id="comparison-to-umap">Comparison to UMAP<a class="headerlink" href="#comparison-to-umap" title="Permanent link">¶</a></h2>
+<p>UMAP optimizes a different objective, so its KL and neighbor-preservation scores are not directly comparable. On its own defaults and a k = 15 graph from the same k-NN code, UMAP's optimization took 3.0 s at 50K and 121 s at 1M points on 12 threads. tsne-h2pack took 2.2 s and 28 s.</p>
+<h2 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Learning rate.</strong> tsne-h2pack keeps scikit-learn's factor 4 in the gradient. Libraries that drop it take a 4× smaller step at the same nominal learning rate, so "auto" rules are not identical across libraries.</li>
+<li><strong>Self-reported KL.</strong> Each library computes its own KL, so those numbers are not comparable. The quality numbers here are all recomputed against one common P.</li>
+<li><strong>Memory.</strong> tsne-h2pack's peak memory is 16 GB at 1M points in both 2D and 3D, somewhat more than FFT-based implementations need.</li>
+<li><strong>Hardware.</strong> One laptop. macOS decides which cores run the threads, and some work may have landed on the slower efficiency cores, so the times are an upper bound on what the hardware can do. Thread scaling on server cores can differ.</li>
+</ul>
+<h2 id="reproducing-the-benchmarks">Reproducing the benchmarks<a class="headerlink" href="#reproducing-the-benchmarks" title="Permanent link">¶</a></h2>
+<p>The suite lives in the <a href="https://github.com/xinxing02/tsne-h2pack-python/tree/main/benchmarks"><code>benchmarks/</code></a> folder of the repository. Its README describes the protocol, and <code>config.py</code> holds the sizes, thread counts and repetitions. The full sweep takes several hours on a laptop.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../technical/accuracy/" class="btn btn-neutral float-left" title="Accuracy and reproducibility"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../api/" class="btn btn-neutral float-right" title="API reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>&copy; Copyright 2026, tsne-h2pack contributors.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/xinxing02/tsne-h2pack-python" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../technical/accuracy/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../api/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

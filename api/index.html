@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Xin Xing" /><link rel="canonical" href="https://xinxing02.github.io/tsne-h2pack-python/api/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API reference - tsne-h2pack</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API reference";
+        var mkdocs_page_input_path = "api.md";
+        var mkdocs_page_url = "/tsne-h2pack-python/api/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> tsne-h2pack
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="..#the-idea-in-one-picture">The idea in one picture</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="..#time-grows-roughly-linearly-with-n">Time grows roughly linearly with N</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="..#explore-the-documentation">Explore the documentation</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#from-pypi">From PyPI</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#optional-k-nn-backends">Optional k-NN backends</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#building-from-source">Building from source</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#check-the-installation">Check the installation</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick start</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../quickstart/#differences-from-scikit-learn">Differences from scikit-learn</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../quickstart/#a-real-dataset">A real dataset</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../quickstart/#what-to-read-next">What to read next</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../user-guide/">How to use tsne-h2pack</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#threads">Threads</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#large-datasets">Large datasets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#perplexity">Perplexity</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#choosing-a-k-nn-method">Choosing a k-NN method</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#precomputed-k-nn-graphs">Precomputed k-NN graphs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#3d-embeddings">3D embeddings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#h2-parameters">H² parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#exact-repulsion">Exact repulsion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#learning-rate">Learning rate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#reproducibility">Reproducibility</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#profiling">Profiling</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technical/algorithm/">How it works</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#the-t-sne-gradient">The t-SNE gradient</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#one-kernel-gives-both-force-and-normalization">One kernel gives both force and normalization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#h2-matrices">H² matrices</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#reusing-the-repulsive-force">Reusing the repulsive force</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#comparison-with-other-methods">Comparison with other methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#the-rest-of-the-pipeline">The rest of the pipeline</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technical/accuracy/">Accuracy and reproducibility</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/accuracy/#why-a-loose-tolerance-is-enough">Why a loose tolerance is enough</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/accuracy/#how-quality-is-measured">How quality is measured</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/accuracy/#reproducibility">Reproducibility</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../benchmarks/">Benchmarks</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#setup">Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#2d-scaling-with-data-size-and-threads">2D: scaling with data size and threads</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../benchmarks/#inside-the-optimization">Inside the optimization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#3d-scaling-with-data-size-and-threads">3D: scaling with data size and threads</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#comparison-to-other-t-sne-implementations">Comparison to other t-SNE implementations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#comparison-to-umap">Comparison to UMAP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#caveats">Caveats</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#reproducing-the-benchmarks">Reproducing the benchmarks</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">API reference</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#tsne_h2pack.TSNE">TSNE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#tsne_h2pack.TSNE.fit_transform">fit_transform</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">More</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../troubleshooting/#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../troubleshooting/#runtime">Runtime</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../changelog/">Changelog</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#unreleased">[Unreleased]</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#331-2026-11-09">[3.3.1] - 2026-11-09</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#added">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#fixed">Fixed</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#330-2026-11-05">[3.3.0] - 2026-11-05</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#added_1">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed_1">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#benchmarks">Benchmarks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#build">Build</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#repository">Repository</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#320-2026-10-07">[3.2.0] - 2026-10-07</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed_2">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#performance">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#benchmarks_1">Benchmarks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#311-2026-09-20">[3.1.1] - 2026-09-20</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#fixed_1">Fixed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#performance_1">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#benchmarks_2">Benchmarks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#310-2026-09-20">[3.1.0] - 2026-09-20</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#fixed_2">Fixed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#packaging">Packaging</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed_3">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#performance_2">Performance</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#301-2026-07-06">[3.0.1] - 2026-07-06</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#added_2">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed_4">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#fixed_3">Fixed</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#300-2026-02-11-internal">[3.0.0] - 2026-02-11 (internal)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#major-changes-breaking-release">🚀 Major Changes - Breaking Release</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#technical-improvements">🔧 Technical Improvements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#distribution">📦 Distribution</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#testing">🧪 Testing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#documentation">📚 Documentation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#migration-from-v2x">🔄 Migration from v2.x</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#known-issues">⚠️ Known Issues</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#requirements">🎯 Requirements</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#200-2026-02-01">[2.0.0] - 2026-02-01</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#changed-unified-k-nn-interface">Changed - Unified k-NN Interface</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#added_3">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#files">Files</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#100-initial-release">[1.0.0] - Initial Release</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../changelog/#features">Features</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../changelog/#version-history-summary">Version History Summary</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../citing/">Citing</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../citing/#license">License</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">tsne-h2pack</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+      <li class="breadcrumb-item active">API reference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="api-reference">API reference<a class="headerlink" href="#api-reference" title="Permanent link">¶</a></h1>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="tsne_h2pack.TSNE" class="doc doc-heading">
+            <span class="doc doc-object-name doc-class-name">tsne_h2pack.TSNE</span>
+
+
+<a href="#tsne_h2pack.TSNE" class="headerlink" title="Permanent link">¶</a></h2>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">TSNE</span><span class="p">(</span>
+    <span class="n">n_components</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">perplexity</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span>
+    <span class="n">early_exaggeration</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">12.0</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"auto"</span><span class="p">,</span>
+    <span class="n">max_iter</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="n">n_iter_without_progress</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span>
+    <span class="n">min_grad_norm</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-07</span><span class="p">,</span>
+    <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"euclidean"</span><span class="p">,</span>
+    <span class="n">init</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"pca"</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"h2pack"</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">h2_tol</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">h2_rebuild_freq</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">enable_profiling</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">profiling_output_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">knn_method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"pynndescent"</span><span class="p">,</span>
+    <span class="n">knn_params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">h2_rebuild_freq_early</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">h2_leaf_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>t-SNE: t-Distributed Stochastic Neighbor Embedding with H2Pack acceleration.</p>
+<p>Drop-in replacement for sklearn.manifold.TSNE with identical API.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>n_components</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>2</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Dimension of the embedded space.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>perplexity</code></b>
+                  (<code><span title="float">float</span></code>, default:
+                      <code>30.0</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>The perplexity is related to the number of nearest neighbors that
+is used in other manifold learning algorithms. Larger datasets
+usually require a larger perplexity. Consider selecting a value
+between 5 and 50. Different values can result in significantly
+different results.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>early_exaggeration</code></b>
+                  (<code><span title="float">float</span></code>, default:
+                      <code>12.0</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Controls how tight natural clusters in the original space are in
+the embedded space and how much space will be between them.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>learning_rate</code></b>
+                  (<code><span title="float">float</span> or <span title="auto">auto</span></code>, default:
+                      <code>&#39;auto&#39;</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>The learning rate. 'auto' uses <code>max(n_samples / 12, 200)</code>, the rule
+FIt-SNE and openTSNE use: a fixed rate of a few hundred badly
+under-converges once n_samples reaches the tens of thousands.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>max_iter</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>1000</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of iterations for the optimization.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n_iter_without_progress</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>300</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of iterations without progress before we abort the
+optimization.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>min_grad_norm</code></b>
+                  (<code><span title="float">float</span></code>, default:
+                      <code>1e-7</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>If the gradient norm is below this threshold, the optimization will
+be stopped.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>metric</code></b>
+                  (<code>(<span title="euclidean">euclidean</span>, <span title="precomputed">precomputed</span>)</code>, default:
+                      <code>&#39;euclidean&#39;</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>'euclidean': X is a feature array and the k-NN graph is built with
+<code>knn_method</code>. 'precomputed': X is a sparse (n_samples, n_samples)
+matrix of k-NN distances (not squared), as returned by
+<code>sklearn.neighbors.kneighbors_graph(..., mode='distance')</code> or any
+other k-NN library; every row needs more than <code>perplexity</code> neighbors
+(3 * perplexity is what the 'euclidean' path uses). The k-NN search is
+skipped, so several runs, or several libraries, can share one graph.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>init</code></b>
+                  (<code>(<span title="random">random</span>, <span title="pca">pca</span>)</code>, default:
+                      <code>&#39;random&#39;</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Initialization of the embedding. 'pca' follows scikit-learn: the PCA
+projection of X (<code>svd_solver='randomized'</code>, seeded with
+<code>random_state</code>) rescaled so that the first coordinate has standard
+deviation 1e-4; it usually preserves the global structure better.
+'random' draws each coordinate from N(0, 1e-4) in the C extension.
+PCA needs features, so with <code>metric='precomputed'</code> an init of 'pca'
+falls back to 'random' with a warning (pass <code>init='random'</code> to
+silence it). An ndarray is used as the initial embedding as is (no
+rescaling).</p>
+<p>.. versionchanged:: 3.3.0
+   The default changed from 'random' to 'pca', as in scikit-learn 1.2.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>verbose</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>0</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Verbosity level. If &gt; 0, prints progress information.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>random_state</code></b>
+                  (<code><span title="int">int</span> or None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Random seed for reproducibility.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>method</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>&#39;h2pack&#39;</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Method for repulsive force computation:
+- 'h2pack': Use H2Pack for O(N) computation (default)
+- 'exact': Use direct O(N²) computation</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n_jobs</code></b>
+                  (<code><span title="int">int</span> or None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Number of threads for the k-NN search, the optimizer and H2Pack.
+None means 1 thread; -1 means all cores (joblib convention).</p>
+              </div>
+            </li>
+            <li>
+              <b><code>h2_tol</code></b>
+                  (<code><span title="float">float</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>H2Pack low-rank approximation tolerance. Lower values = more accurate
+but slower. None selects the default for <code>n_components</code> (see
+<code>H2_DEFAULTS</code>; 1e-2 in 2D, which already reproduces the embedding
+quality of an FFT (openTSNE) run). Only used when method='h2pack'.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>h2_rebuild_freq</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>The H2 matrix is rebuilt, and the repulsive force recomputed, every
+this many iterations; in between, the last repulsive force is reused.
+Lower values = more accurate but slower (in 2D, 2 is slightly better
+than FIt-SNE's quality, 3 is on par). None selects the default for
+<code>n_components</code>. Only used when method='h2pack'.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>h2_rebuild_freq_early</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Rebuild frequency during early exaggeration (after the first 20
+iterations), a phase that is insensitive to a delayed repulsive force.
+Never lower than <code>h2_rebuild_freq</code>. None selects the default for
+<code>n_components</code>.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>h2_leaf_size</code></b>
+                  (<code><span title="int">int</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Maximum number of points per H2 leaf box. Affects speed and memory
+only, not accuracy. None selects the default for <code>n_components</code>.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>enable_profiling</code></b>
+                  (<code><span title="bool">bool</span></code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Enable detailed profiling of computation time breakdown.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>profiling_output_file</code></b>
+                  (<code><span title="str">str</span> or None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Path to save profiling CSV data. If None, uses default name.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>knn_method</code></b>
+                  (<code><span title="str">str</span></code>, default:
+                      <code>&#39;pynndescent&#39;</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>k-NN method for finding nearest neighbors:
+- 'pynndescent': PyNNDescent approximate k-NN (default, ~96% recall, auto-tuning)
+- 'exact': sklearn brute-force exact k-NN
+- 'balltree': sklearn ball tree exact k-NN
+- 'faiss': FAISS approximate k-NN (CPU-only, very fast)
+- 'annoy': Annoy approximate k-NN (memory-efficient)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>knn_params</code></b>
+                  (<code><span title="dict">dict</span> or None</code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Method-specific parameters for k-NN computation. See _knn_methods.py
+for details on each method's parameters. Common parameters:</p>
+<p>PyNNDescent (auto-tuning default):
+    - n_trees: Number of RP trees (None=auto, default varies by dataset size)
+    - n_iters: Search iterations (None=auto, default varies by dataset size)
+    - metric: Distance metric (default='euclidean')</p>
+<p>FAISS:
+    - index_type: 'Flat', 'IVFFlat', 'IVFPQ', 'HNSW' (default='IVFFlat')
+    - nlist: Number of clusters for IVF (default=100)
+    - nprobe: Clusters to search (default=10)
+    - use_gpu: Use GPU if available (default=False)</p>
+<p>Annoy:
+    - n_trees: Number of trees (default=50)
+    - search_k: Search depth (default=-1, auto)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>embedding_</code></b>
+                  (<code>ndarray of shape (n_samples, n_components)</code>)
+              –
+              <div class="doc-md-description">
+                <p>Stores the embedding vectors.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>kl_divergence_</code></b>
+                  (<code><span title="float">float</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Kullback-Leibler divergence after optimization.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>n_iter_</code></b>
+                  (<code><span title="int">int</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>Number of iterations run.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <div class="highlight"><pre><span></span><code><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">tsne_h2pack</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">perplexity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(1000, 2)</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="tsne_h2pack.TSNE.fit_transform" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">fit_transform</span>
+
+
+<a href="#tsne_h2pack.TSNE.fit_transform" class="headerlink" title="Permanent link">¶</a></h3>
+<div class="doc-signature highlight"><pre><span></span><code><span class="nf">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Fit X into an embedded space and return that transformed output.</p>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>X</code></b>
+                  (<code>ndarray of shape (n_samples, n_features)</code>)
+              –
+              <div class="doc-md-description">
+                <p>Input data.</p>
+              </div>
+            </li>
+            <li>
+              <b><code>y</code></b>
+                  (<code><span title="Ignored">Ignored</span></code>, default:
+                      <code>None</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Not used, present for API consistency by sklearn convention.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Returns:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+<b><code>X_new</code></b>(                  <code>ndarray of shape (n_samples, n_components)</code>
+)              –
+              <div class="doc-md-description">
+                <p>Embedding of the training data in low-dimensional space.</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../benchmarks/" class="btn btn-neutral float-left" title="Benchmarks"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../troubleshooting/" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>&copy; Copyright 2026, tsne-h2pack contributors.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/xinxing02/tsne-h2pack-python" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../benchmarks/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../troubleshooting/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

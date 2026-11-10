@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Xin Xing" /><link rel="canonical" href="https://xinxing02.github.io/tsne-h2pack-python/changelog/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Changelog - tsne-h2pack</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+        <link href="../stylesheets/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Changelog";
+        var mkdocs_page_input_path = "changelog.md";
+        var mkdocs_page_url = "/tsne-h2pack-python/changelog/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/yaml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> tsne-h2pack
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="..#the-idea-in-one-picture">The idea in one picture</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="..#time-grows-roughly-linearly-with-n">Time grows roughly linearly with N</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="..#explore-the-documentation">Explore the documentation</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#from-pypi">From PyPI</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#optional-k-nn-backends">Optional k-NN backends</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#building-from-source">Building from source</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../installation/#check-the-installation">Check the installation</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../quickstart/">Quick start</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../quickstart/#differences-from-scikit-learn">Differences from scikit-learn</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../quickstart/#a-real-dataset">A real dataset</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../quickstart/#what-to-read-next">What to read next</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../user-guide/">How to use tsne-h2pack</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#threads">Threads</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#large-datasets">Large datasets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#perplexity">Perplexity</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#choosing-a-k-nn-method">Choosing a k-NN method</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#precomputed-k-nn-graphs">Precomputed k-NN graphs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#3d-embeddings">3D embeddings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#h2-parameters">H² parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#exact-repulsion">Exact repulsion</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#learning-rate">Learning rate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#reproducibility">Reproducibility</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../user-guide/#profiling">Profiling</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technical/algorithm/">How it works</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#the-t-sne-gradient">The t-SNE gradient</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#one-kernel-gives-both-force-and-normalization">One kernel gives both force and normalization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#h2-matrices">H² matrices</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#reusing-the-repulsive-force">Reusing the repulsive force</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#comparison-with-other-methods">Comparison with other methods</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/algorithm/#the-rest-of-the-pipeline">The rest of the pipeline</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../technical/accuracy/">Accuracy and reproducibility</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/accuracy/#why-a-loose-tolerance-is-enough">Why a loose tolerance is enough</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/accuracy/#how-quality-is-measured">How quality is measured</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../technical/accuracy/#reproducibility">Reproducibility</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../benchmarks/">Benchmarks</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#setup">Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#2d-scaling-with-data-size-and-threads">2D: scaling with data size and threads</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../benchmarks/#inside-the-optimization">Inside the optimization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#3d-scaling-with-data-size-and-threads">3D: scaling with data size and threads</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#comparison-to-other-t-sne-implementations">Comparison to other t-SNE implementations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#comparison-to-umap">Comparison to UMAP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#caveats">Caveats</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../benchmarks/#reproducing-the-benchmarks">Reproducing the benchmarks</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../api/">API reference</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../api/#tsne_h2pack.TSNE">TSNE</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="../api/#tsne_h2pack.TSNE.fit_transform">fit_transform</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">More</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../troubleshooting/#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="../troubleshooting/#runtime">Runtime</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Changelog</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#unreleased">[Unreleased]</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#331-2026-11-09">[3.3.1] - 2026-11-09</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#added">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#330-2026-11-05">[3.3.0] - 2026-11-05</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#added_1">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#changed_1">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benchmarks">Benchmarks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#build">Build</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#repository">Repository</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#320-2026-10-07">[3.2.0] - 2026-10-07</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#changed_2">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benchmarks_1">Benchmarks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#311-2026-09-20">[3.1.1] - 2026-09-20</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#fixed_1">Fixed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance_1">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#benchmarks_2">Benchmarks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#310-2026-09-20">[3.1.0] - 2026-09-20</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#fixed_2">Fixed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#packaging">Packaging</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#changed_3">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance_2">Performance</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#301-2026-07-06">[3.0.1] - 2026-07-06</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#added_2">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#changed_4">Changed</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fixed_3">Fixed</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#300-2026-02-11-internal">[3.0.0] - 2026-02-11 (internal)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#major-changes-breaking-release">🚀 Major Changes - Breaking Release</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#technical-improvements">🔧 Technical Improvements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#distribution">📦 Distribution</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#testing">🧪 Testing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#documentation">📚 Documentation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#migration-from-v2x">🔄 Migration from v2.x</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#known-issues">⚠️ Known Issues</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#requirements">🎯 Requirements</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#200-2026-02-01">[2.0.0] - 2026-02-01</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#changed-unified-k-nn-interface">Changed - Unified k-NN Interface</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#added_3">Added</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#files">Files</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#100-initial-release">[1.0.0] - Initial Release</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#features">Features</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#version-history-summary">Version History Summary</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../citing/">Citing</a>
+    <ul>
+    <li class="toctree-l2"><a class="reference internal" href="../citing/#license">License</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">tsne-h2pack</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">More</li>
+      <li class="breadcrumb-item active">Changelog</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">¶</a></h1>
+<p>All notable changes to tsne-h2pack will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+<h2 id="unreleased">[Unreleased]<a class="headerlink" href="#unreleased" title="Permanent link">¶</a></h2>
+<h2 id="331-2026-11-09">[3.3.1] - 2026-11-09<a class="headerlink" href="#331-2026-11-09" title="Permanent link">¶</a></h2>
+<p>Installs and runs on every CPython from 3.10 to 3.14, checked automatically in CI.</p>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">¶</a></h3>
+<ul>
+<li>Wheels for <strong>Python 3.14</strong> (Linux x86-64 and macOS arm64).</li>
+<li>CI runs the test suite on Python 3.10, 3.11, 3.12, 3.13 and 3.14 on Linux and macOS (was
+  3.10 and 3.12), installs the <code>pynndescent</code> extra the way users do, and runs the defaults on
+  20,000 points, large enough to take PyNNDescent's NN-descent path. Every wheel is tested the
+  same way after it is built.</li>
+</ul>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Python 3.10 or newer is required</strong> (<code>requires-python = "&gt;=3.10"</code>; was 3.8). Python 3.8
+  and 3.9 are end-of-life (October 2024 and October 2025), and neither was tested before. On
+  3.9 the newest PyNNDescent (0.7.0) crashes inside numba 0.60, the newest numba for 3.9,
+  which broke the default <code>knn_method='pynndescent'</code> above a few thousand points, and the
+  test suite failed on GitHub's macOS runner. No more wheels are built for 3.9; 3.3.0 stays
+  installable there.</li>
+</ul>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">¶</a></h3>
+<ul>
+<li>With the default <code>init='pca'</code>, NumPy 2.0-2.2 on macOS (2.2 is the newest NumPy for Python
+  3.10) printed about fifty spurious <code>RuntimeWarning: divide by zero / overflow / invalid value
+  encountered in matmul</code> from scikit-learn's randomized PCA, although the result was exact
+  (numpy/numpy#28687). They are silenced around the PCA only; a non-finite PCA result now
+  raises a clear error.</li>
+<li>The Annoy self-check in the test suite runs in a child process: a broken Annoy build can
+  segfault (GitHub's macOS runner, Python 3.11), which killed the whole pytest run.</li>
+</ul>
+<h2 id="330-2026-11-05">[3.3.0] - 2026-11-05<a class="headerlink" href="#330-2026-11-05" title="Permanent link">¶</a></h2>
+<p>PCA initialization, now the default as in scikit-learn, and the benchmarks rerun on an
+Apple M5 Max at 1, 4, 8 and 12 threads.</p>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>init='pca'</code>, as in scikit-learn: the randomized PCA of X (seeded with <code>random_state</code>),
+  rescaled so the first coordinate has standard deviation 1e-4. Computed in Python
+  (0.5 s at 1M x 50) and handed to C through the new <code>tsne_params_t.init_Y</code> field (appended;
+  the struct is now 160 bytes).</li>
+<li><code>init</code> also accepts an ndarray of shape (n_samples, n_components), used as is, also with
+  <code>metric='precomputed'</code>.</li>
+</ul>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>The default initialization is now <code>init='pca'</code></strong>, as in scikit-learn 1.2+ (was <code>'random'</code>).
+  On Zheng 100K / 250K (same P, 3 seeds) PCA init gives clearly better global structure
+  (Spearman correlation of high- vs low-dimensional distances 0.54 / 0.56 vs 0.49 / 0.47, and
+  far less seed-dependent), the same 10-NN preservation and a 0.2-0.5% higher common-P KL,
+  at no cost in optimization time. Pass <code>init='random'</code> for the previous behavior.</li>
+<li>With <code>metric='precomputed'</code> there are no features to project, so <code>init='pca'</code> (the default)
+  falls back to random initialization with a <code>UserWarning</code>; scikit-learn raises instead.
+  Pass <code>init='random'</code> to silence it. The benchmark scripts pin <code>init='random'</code>, the protocol
+  every library is compared under.</li>
+</ul>
+<h3 id="benchmarks">Benchmarks<a class="headerlink" href="#benchmarks" title="Permanent link">¶</a></h3>
+<ul>
+<li>All suites were rerun on an Apple M5 Max at 1, 4, 8 and 12 threads: 2D and 3D sweeps on
+  the 10x mouse brain cells, the GloVe out-of-the-box comparison and the full 1.3M-cell run
+  (see <code>benchmarks/</code>). Headline 2D numbers (optimization on the same P):
+  2.1-4.0x faster than FIt-SNE on one thread, 2.9-9.7x on four, 3.9-11.4x on eight and
+  4.7-11.6x on twelve; 1M points in 27.8 s of optimization and 69 s end to end on 12
+  threads. 3D: 5.3-18.5x faster than FIt-SNE's Barnes-Hut at better quality. Full 1.3M
+  cells end to end: 106 s on 12 threads.</li>
+<li><code>benchmarks/config.py</code> runs 1, 4, 8 and 12 threads; <code>report.py</code> prints a thread-scaling
+  table per thread count; new <code>benchmarks/hero_zheng.py</code> for the full-dataset run.</li>
+</ul>
+<h3 id="build">Build<a class="headerlink" href="#build" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>The macOS wheels now require macOS 15</strong> (<code>macosx_15_0_arm64</code>; was 14). GitHub retired
+  its macOS 14 runners on 2026-11-02, and the Homebrew OpenBLAS and GCC runtime libraries
+  bundled into the wheel on the macOS 15 runners are built for macOS 15. On macOS 14, pip
+  builds from the source distribution (needs Homebrew <code>gcc</code> and <code>openblas</code>).</li>
+<li>CI runs its macOS jobs on <code>macos-15</code>.</li>
+<li>On macOS 27 the H2Pack makefile needs <code>MACOSX_DEPLOYMENT_TARGET</code> set (e.g. 14.0):
+  GCC 12 otherwise derives <code>-mmacosx-version-min=18.0</code> from the Darwin version and the
+  assembler rejects it. <code>setup.py</code> already sets it for the extension.</li>
+</ul>
+<h3 id="repository">Repository<a class="headerlink" href="#repository" title="Permanent link">¶</a></h3>
+<ul>
+<li>Prepared for the public release: maintainer scripts moved to <code>scripts/</code>, a development
+  guide in <code>docs/DEVELOPMENT.md</code>, superseded pre-September-2026 benchmark results and the
+  old hand-written site removed, project links point to GitHub and the documentation site.</li>
+</ul>
+<h2 id="320-2026-10-07">[3.2.0] - 2026-10-07<a class="headerlink" href="#320-2026-10-07" title="Permanent link">¶</a></h2>
+<p>3D got a real tuning pass: per-dimension H2 defaults, the tree-order renumbering in any
+dimension, and proxy points selected at <code>h2_tol</code>. Zheng 1M in 3D at 8 threads: 857 s -&gt; 362 s
+optimization for the same embedding quality; vs FIt-SNE's Barnes-Hut (its only 3D mode)
+9.6-24x faster on identical P (<code>benchmarks/results_3d/REPORT.md</code>). 2D results are unchanged
+apart from ~10% from the proxy-point change.</p>
+<h3 id="changed_2">Changed<a class="headerlink" href="#changed_2" title="Permanent link">¶</a></h3>
+<ul>
+<li>H2 settings default to <code>None</code> and resolve per embedding dimension (<code>tsne_h2pack.H2_DEFAULTS</code>,
+  <code>h2_defaults(n_components)</code>): 2D unchanged (<code>h2_tol=1e-2</code>, rebuild 3/10, leaf 100); <strong>3D uses
+  <code>h2_tol=3e-2</code></strong> (rank 41 instead of 58; 13-20% faster at 8 threads, common-P KL +0.1-0.2%,
+  10-NN preservation equal or higher on Zheng 250K / 1M). Tuning grid on one shared P: leaf
+  size flat 50-150, rebuild every 2 / 4 / 6 = -0.1% / +0.35% / +2% KL, <code>h2_tol</code> 1e-1 another
+  ~20% faster for +0.5% KL. Explicit values still win.</li>
+</ul>
+<h3 id="performance">Performance<a class="headerlink" href="#performance" title="Permanent link">¶</a></h3>
+<ul>
+<li>Points are renumbered along the H2 tree order in any embedding dimension (it was 2D-only).
+  The generic attractive pass gathers Y[d*n + j] per neighbor and became cache-miss bound at
+  scale in 3D (grew like N^1.7): Zheng 1M / 8 threads, 3D, attractive 562 -&gt; 147 s,
+  optimization 856 -&gt; 440 s; embedding unchanged.</li>
+<li>Proxy points are selected at the run's <code>h2_tol</code> (clamped to [1e-6, 1e-2]) instead of a fixed
+  1e-4 left over from the old default. Fewer proxy points make every node's ID cheaper on every
+  rebuild; the ID never resolved the kernel below <code>h2_tol</code> anyway, so quality is unchanged.
+  3D, GloVe 250K, 8 threads: 312 -&gt; 146 proxy points per box, U-build 96 -&gt; 39 s, optimization
+  163 -&gt; 106 s. 2D: 58 -&gt; 33 points, optimization 17.3 -&gt; 15.4 s. Cache files are now
+  <code>proxy_v2_&lt;dim&gt;d_f&lt;bits&gt;_tol&lt;tol&gt;.txt</code> (<code>TSNE_PROXY_TOL</code> overrides for experiments).</li>
+<li><code>TSNE_H2_TIMERS=1</code> also prints <code>H2RANK max=... mean=...</code> (H2 rank over all nodes and rebuilds).</li>
+</ul>
+<h3 id="benchmarks_1">Benchmarks<a class="headerlink" href="#benchmarks_1" title="Permanent link">¶</a></h3>
+<ul>
+<li>3D, out of the box on GloVe 250K / 8 threads: the H2 rank is
+  ~59 (2D: 17) and the U-build dominates the rebuild; <code>h2_leaf_size</code> does not help in 3D
+  (100 = 200 &lt; 400 &lt; 800), the proxy tolerance does (above). FIt-SNE's FFT path is 1D/2D only
+  and returns garbage for <code>no_dims=3</code> without an error (negative "cost"); its Barnes-Hut mode
+  takes 1138.8 s end-to-end (KL 4.900, 10-NN 0.213) vs 147.9 s for tsne-h2pack (KL 4.616,
+  10-NN 0.231): 7.7x end-to-end, 10.3x on the optimization.</li>
+<li><code>BENCH_DIM=3 python sweep.py</code>: the whole suite in 3D (<code>results_3d/</code>), FIt-SNE and openTSNE
+  on their Barnes-Hut gradient. Zheng 50K-1M, shared P, 1 and 8 threads: tsne-h2pack optimization
+  4.5-14x (1 thread) / 9.6-24x (8 threads) faster than FIt-SNE Barnes-Hut, KL 2-4% lower,
+  10-NN preservation higher at every size; 1M / 8 threads 362 s vs 5475 s.</li>
+<li>Where the speedup over FIt-SNE comes from (GloVe 250K, one P):
+  at 1 thread the advantage over FIt-SNE is the reuse alone (H2 per evaluation ~15% slower than the
+  FFT step); at 8 threads 1.7x from H2's parallel scaling x 2.4x from reuse. FIt-SNE's FFT stage is
+  serial (Amdahl serial fraction 0.32). In 3D H2 is 3.7-5x faster per evaluation than Barnes-Hut.</li>
+</ul>
+<h2 id="311-2026-09-20">[3.1.1] - 2026-09-20<a class="headerlink" href="#311-2026-09-20" title="Permanent link">¶</a></h2>
+<p>Quality fix for the default k-NN path; anyone who ran 3.1.0 with the default <code>knn_method</code> on
+more than 10,000 samples should re-run.</p>
+<h3 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong><code>knn_method='pynndescent'</code> (the default above 10,000 samples) listed every point as its own
+  nearest neighbor.</strong> <code>NNDescent.neighbor_graph</code> returns the query point in each row (distance 0);
+  the wrapper kept it, so P got a distance-0 self entry per row and one real neighbor fewer than
+  requested. The self entry absorbed a large share of the row's perplexity budget: on GloVe-100
+  (20K), common-P KL 4.49 -&gt; 3.87 and 10-NN preservation 0.16 -&gt; 0.24 after the fix (FIt-SNE:
+  3.80 / 0.24). Exact, ball-tree, FAISS and Annoy paths and <code>metric='precomputed'</code> were not
+  affected. The backend now also strips explicit diagonal entries from any k-NN graph it is given.</li>
+<li>The k-NN CSR is column-sorted before the perplexity search on every path, so the same graph
+  gives the same P whether it comes from a k-NN method (rows ordered by distance) or from
+  <code>metric='precomputed'</code> (rows ordered by index).</li>
+</ul>
+<h3 id="performance_1">Performance<a class="headerlink" href="#performance_1" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>verbose=1</code> no longer costs ~180 s at 1M points: the progress KL was a serial pass over all of
+  P every 10 iterations; it now runs on all threads at the 50-iteration print cadence.</li>
+</ul>
+<h3 id="benchmarks_2">Benchmarks<a class="headerlink" href="#benchmarks_2" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>benchmarks/oob_compare.py</code> + <code>oob_visualize.py</code>: out-of-the-box comparison (each library with
+  its own defaults). GloVe-100, 1.18M points: tsne-h2pack 3.02x faster end-to-end at 8 threads
+  (276.9 vs 835.8 s), 1.86x at 1 thread; common-P KL 5.93 vs 6.23 and exact 10-NN preservation
+  0.151 vs 0.124 in its favor, because FIt-SNE's Annoy defaults reach 48.7% recall on this data
+  vs 89.1% for pynndescent. <code>benchmarks/results/oob_glove/REPORT.md</code>.</li>
+</ul>
+<h2 id="310-2026-09-20">[3.1.0] - 2026-09-20<a class="headerlink" href="#310-2026-09-20" title="Permanent link">¶</a></h2>
+<p>First release on PyPI. The optimization phase is 2.0-3.4x faster than FIt-SNE on one thread
+and 4.3-8.8x on eight at matched embedding quality (same k-NN graph and P; Zheng 10x,
+50K-1M points; <code>benchmarks/results/REPORT.md</code>). Two correctness fixes below change results
+relative to 3.0.x, as do the new defaults for <code>learning_rate</code>, <code>h2_tol</code> and <code>h2_rebuild_freq</code>.</p>
+<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Perplexity calibration collapsed to a uniform P for large-magnitude distances.</strong>
+  The sigma search clamped the exponent at -700; when squared k-NN distances were
+  large relative to the starting sigma (e.g. MNIST in 0-255 pixel units) every
+  neighbor hit the clamp, the row looked uniform, and the bisection walked the wrong
+  way, so P came out as exactly <code>1/k</code> per neighbor (perplexity = k instead of 30).
+  Now bisects on beta with min-shifted distances; P matches openTSNE's to 2e-6.</li>
+<li><strong>Divergence when the H2 matrix is not rebuilt every iteration.</strong> Between rebuilds
+  the stale kernel weights were multiplied by the current Y, so the repulsion of a
+  pair grew linearly with how far it had separated since the build. The repulsive
+  force from the last rebuild is now reused as a whole until the next rebuild
+  (bounded, slightly delayed gradient), which also skips the matvec on those iterations.</li>
+</ul>
+<h3 id="packaging">Packaging<a class="headerlink" href="#packaging" title="Permanent link">¶</a></h3>
+<ul>
+<li>The sdist no longer picks up binaries left in <code>tsne_h2pack/_lib/</code> by a local build
+  (<code>MANIFEST.in</code>); wheels still get the extension and <code>libH2Pack.so</code> from <code>build_ext</code>.</li>
+<li><code>release_preflight.sh</code>: version consistency, submodule reachability, full pytest,
+  sdist + wheel build, <code>twine check</code>, delocate, fresh-venv wheel and sdist installs.</li>
+<li><code>wheels.yml</code>: manual dispatch can upload the artifacts to TestPyPI as a dry run.</li>
+</ul>
+<h3 id="changed_3">Changed<a class="headerlink" href="#changed_3" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>metric='precomputed'</code>: <code>fit_transform</code> accepts a sparse matrix of k-NN distances (as sklearn's
+  TSNE does) and skips the neighbor search, so runs and libraries can share one graph.</li>
+<li><code>knn_method='pynndescent'</code> (the default) uses exact brute-force search below 10,000
+  samples, unless <code>n_trees</code> / <code>n_iters</code> are passed explicitly. NN-descent is at its worst
+  when k = 3 x perplexity is a large share of a small dataset, and the graph was poor
+  enough to show in the embedding (Zheng 5K: common-P KL 1.61 -&gt; 1.44, kNN-preservation
+  0.40 -&gt; 0.44, now on par with FIt-SNE).</li>
+<li>Benchmark suite rewritten as one suite under <code>benchmarks/</code> (<code>config.py</code>, <code>sweep.py</code>,
+  <code>run.py</code>, <code>methods.py</code>, <code>data.py</code>, <code>quality.py</code>, <code>report.py</code>; see its README). One
+  configuration per library (no "fast" variants); every library on its own <code>'auto'</code> learning-rate rule;
+  all three t-SNE libraries optimize the <strong>same P</strong> from one shared pynndescent k-NN graph
+  (FIt-SNE loads it as precomputed affinities); common-P quality gate; k-NN / setup /
+  optimization breakdown at 1 and 8 threads; minimum size 50K. <code>benchmarks_opentsne/</code> and the
+  <code>examples/benchmark_threading_*</code> scripts are removed; their old results are not comparable.</li>
+<li><code>learning_rate</code> defaults to <code>'auto'</code> = <code>max(n_samples / 12, 200)</code> (FIt-SNE's rule; note this gradient carries the sklearn factor 4, FIt-SNE's does not).</li>
+<li><code>h2_tol</code> default <code>1e-4</code> -&gt; <code>1e-2</code>; <code>h2_rebuild_freq</code> default <code>2</code> -&gt; <code>3</code>.</li>
+<li>New <code>h2_rebuild_freq_early</code> (default 10): rebuild frequency during early exaggeration.</li>
+<li>New <code>h2_leaf_size</code> (default 100; H2Pack's 2D default was 200).</li>
+</ul>
+<h3 id="performance_2">Performance<a class="headerlink" href="#performance_2" title="Permanent link">¶</a></h3>
+<ul>
+<li>Proxy points (data-independent, 7 s to select on one thread) are cached per user in
+  <code>~/.cache/tsne_h2pack</code> (<code>TSNE_H2PACK_CACHE_DIR</code> overrides, <code>TSNE_H2PACK_NO_PROXY_CACHE=1</code>
+  disables); each run works on a private copy. Fixed start-up cost 8.2 s -&gt; 0.2 s on one thread.</li>
+<li>Fused 3-column H2 matvec (<code>src/tsne_h2_matmul.c</code>): <code>W*[1|Y0|Y1]</code> in one traversal,
+  no BLAS calls on the rank-~10 far-field blocks (matvec 2x faster at 1 thread, 3.5x at 8).</li>
+<li>2D attractive pass: interleaved Y gather, register accumulation, blocked vectorized
+  divide (2.4x faster at 1 thread).</li>
+<li><code>(1+r^2)^-2</code> evaluated directly rather than through H2Pack's generic <code>pow()</code> kernel.</li>
+<li>Points are renumbered along the H2 tree order six times during the run so the attractive
+  pass gathers from nearby memory (1.8x faster attractive pass at 500K); undone on output.</li>
+<li>The attractive pass divides in float32 (differences still formed in double): ~15% faster,
+  embedding quality unchanged.</li>
+<li>H2Pack (submodule): pooled large B/D blocks across rebuilds (peak RSS 21.6 -&gt; 10.2 GB at
+  500K, which also makes 1M points fit in 32 GB), dynamically scheduled B/D build, inlined
+  BLAS-1 in the ID's pivoted QR.</li>
+<li>H2 rebuild, second round (all results bit-identical unless noted; 500K points, 8 threads):</li>
+<li>H2Pack tree partition built with OpenMP tasks + chunked stable bucket sort, post-order
+    numbering in a serial post-pass: same tree for any thread count (8.9 -&gt; 2.4 s).</li>
+<li>H2Pack ID: no one-thread OpenMP team per Householder step, lock-free <code>free_aligned</code>
+    for unpooled blocks (U build 12.1 -&gt; 9.0 s); parallel frees in <code>H2P_destroy</code> (1.3 -&gt; 0.6 s).</li>
+<li>B/D blocks are no longer stored: each H2 matrix is multiplied once, so the fused matvec
+    evaluates them on the fly into a cache-resident buffer (<code>TSNE_H2_JIT=0</code> restores AOT).
+    Rebuild + matvec -2.0 s, peak RSS 10.3 -&gt; 5.9 GB.</li>
+<li>Root enclosing box and NaN/Inf check fused into one pass (1.26 -&gt; 0.24 s); proxy point
+    sets cached across rebuilds instead of re-read from / re-written to the text file on
+    every rebuild (also fixes a leak of one proxy point set per rebuild).</li>
+<li>Point renumbering: parallel CSR transposes (six renumberings 4.3 -&gt; 1.6 s).</li>
+<li>
+<p>Per-iteration element-wise passes run on all threads; mean of Y and Z are summed
+    block-wise in parallel with thread-count-independent rounding (rounding differs from
+    the old serial sums: embeddings agree to 3e-15 after 5 iterations, quality unchanged).</p>
+</li>
+<li>
+<p>Attractive pass, third round (it had become the largest phase: 41% of the optimization at
+  500K / 8 threads, half of it at 1 thread). Kernel now in <code>src/tsne_attr_2d.h</code>:</p>
+</li>
+<li>float32 copy of P's values (the divide already ran in float32): 12 -&gt; 8 bytes streamed per
+    nonzero, no per-nonzero conversion; refreshed after each renumbering. +4 bytes/nnz of memory
+    until <code>DTYPE</code> is float, when <code>P-&gt;values</code> is used directly.</li>
+<li>neighbors gathered from a float32 copy of Y (<code>TSNE_ATTR_F32=2</code>, new default; <code>1</code> = previous
+    arithmetic, <code>0</code> = all double). Equivalent to the exact force of the embedding rounded to
+    float32 (displacement &lt;= 3.8e-6 per coordinate for |y| &lt; 128, the same in every pair);
+    measured force error 2.5e-5 relative, quality unchanged. Falls back to the double gather
+    for max|y| &gt;= 4096.</li>
+<li>one (x, y) copy per neighbor, de-interleaved inside the vector loop; blocks of 16.</li>
+<li>loops written with pointers / <code>size_t</code> counters: setuptools adds CPython's
+    <code>-fno-strict-overflow</code>, which made the <code>int</code>-indexed gather loop 30% slower in the
+    extension than in a standalone build of the same source.</li>
+<li>dynamic chunk <code>n/(64*threads)</code> in [64, 1024].</li>
+</ul>
+<p>Zheng et al. mouse-brain data, optimization only (k-NN excluded), Apple M1 Pro, 1000 iterations,
+same learning-rate rule, quality measured with a common P:</p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>threads</th>
+<th>tsne-h2pack</th>
+<th>FIt-SNE</th>
+<th>speedup</th>
+<th>KL (h2pack / FIt-SNE)</th>
+<th>kNN-pres@10 (h2pack / FIt-SNE)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>250K</td>
+<td>8</td>
+<td>26 s</td>
+<td>81 s</td>
+<td>3.1x</td>
+<td>3.92 / 3.93</td>
+<td>0.205 / 0.203</td>
+</tr>
+<tr>
+<td>500K</td>
+<td>8</td>
+<td>53 s</td>
+<td>137 s</td>
+<td>2.6x</td>
+<td>4.48 / 4.50</td>
+<td>0.158 / 0.155</td>
+</tr>
+<tr>
+<td>1M</td>
+<td>8</td>
+<td>113 s</td>
+<td>354 s</td>
+<td>3.1x</td>
+<td>5.03 / 5.04</td>
+<td>0.116 / 0.114</td>
+</tr>
+<tr>
+<td>250K</td>
+<td>1</td>
+<td>99 s</td>
+<td>146 s</td>
+<td>1.5x</td>
+<td>3.92 / 3.93</td>
+<td>0.204 / 0.203</td>
+</tr>
+<tr>
+<td>500K</td>
+<td>1</td>
+<td>200 s</td>
+<td>306 s</td>
+<td>1.5x</td>
+<td>4.48 / 4.50</td>
+<td>0.157 / 0.155</td>
+</tr>
+<tr>
+<td>1M</td>
+<td>1</td>
+<td>414 s</td>
+<td>715 s</td>
+<td>1.7x</td>
+<td>5.03 / 5.04</td>
+<td>0.117 / 0.114</td>
+</tr>
+</tbody>
+</table>
+<p>After the second round (same harness and machine; the table above is the state before it;
+500K / 1M at 1 thread not re-run):</p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>threads</th>
+<th>opt before -&gt; after</th>
+<th>rebuild + matvec before -&gt; after</th>
+<th>peak RSS</th>
+<th>KL / kNN-pres@10 after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>250K</td>
+<td>8</td>
+<td>26.3 -&gt; 22.4 s</td>
+<td>14.7 + 3.4 -&gt; 8.3 + 4.9 s</td>
+<td>4.9 -&gt; 3.4 GB</td>
+<td>3.92 / 0.203</td>
+</tr>
+<tr>
+<td>500K</td>
+<td>8</td>
+<td>53.1 -&gt; 39.5 s</td>
+<td>28.3 + 6.4 -&gt; 13.7 + 8.4 s</td>
+<td>10.1 -&gt; 5.9 GB</td>
+<td>4.48 / 0.157</td>
+</tr>
+<tr>
+<td>1M</td>
+<td>8</td>
+<td>113.4 -&gt; 82.4 s</td>
+<td>54.7 + 12.4 -&gt; 23.6 + 16.0 s</td>
+<td>18.3 -&gt; 10.9 GB</td>
+<td>5.03 / 0.116</td>
+</tr>
+<tr>
+<td>250K</td>
+<td>1</td>
+<td>98.9 -&gt; 94.1 s</td>
+<td>46.5 + 12.7 -&gt; 33.8 + 20.4 s</td>
+<td>4.9 -&gt; 3.4 GB</td>
+<td>3.92 / 0.205</td>
+</tr>
+</tbody>
+</table>
+<p>(With JIT blocks the B/D evaluation moves from "rebuild" into "matvec". Wall time improves by
+a further ~3 s at 500K: the renumbering is not covered by the per-phase timers.)</p>
+<p>After the third round (attractive pass; same harness and machine):</p>
+<table>
+<thead>
+<tr>
+<th>N</th>
+<th>threads</th>
+<th>opt before -&gt; after</th>
+<th>attractive before -&gt; after</th>
+<th>peak RSS</th>
+<th>KL / kNN-pres@10 after</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>250K</td>
+<td>8</td>
+<td>22.4 -&gt; 15.7 s</td>
+<td>~7 -&gt; 3.6 s</td>
+<td>3.4 -&gt; 3.6 GB</td>
+<td>3.92 / 0.204</td>
+</tr>
+<tr>
+<td>500K</td>
+<td>8</td>
+<td>38.5 -&gt; 29.9 s</td>
+<td>16.2 -&gt; 7.7 s</td>
+<td>5.9 -&gt; 6.2 GB</td>
+<td>4.48 / 0.159</td>
+</tr>
+<tr>
+<td>1M</td>
+<td>8</td>
+<td>82.4 -&gt; 58.7 s</td>
+<td>~41 -&gt; 17.9 s</td>
+<td>10.9 -&gt; 11.4 GB</td>
+<td>5.03 / 0.117</td>
+</tr>
+<tr>
+<td>250K</td>
+<td>1</td>
+<td>94.1 -&gt; 73.7 s</td>
+<td>~38 -&gt; 18.8 s</td>
+<td>3.4 -&gt; 3.6 GB</td>
+<td>3.92 / 0.203</td>
+</tr>
+<tr>
+<td>500K</td>
+<td>1</td>
+<td>-&gt; 144.3 s</td>
+<td>86 -&gt; 41.4 s</td>
+<td>6.0 GB</td>
+<td>4.48 / 0.158</td>
+</tr>
+</tbody>
+</table>
+<p>(Before this round: 136 s for 250K on 8 threads, at a fixed learning rate of 200 that left
+the embedding far less converged -- KL 4.58, kNN-preservation 0.10. openTSNE's FFT takes
+282 s at 250K: its macOS wheel is built without OpenMP.)</p>
+<h2 id="301-2026-07-06">[3.0.1] - 2026-07-06<a class="headerlink" href="#301-2026-07-06" title="Permanent link">¶</a></h2>
+<p>Prepared for PyPI but never uploaded; the first upload was 3.1.0. (Version 3.0.0 and an
+earlier 3.0.1 were tagged on 2026-02-11, also never uploaded; their changes are consolidated
+into this entry.)</p>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">¶</a></h3>
+<ul>
+<li>GitHub Actions CI:</li>
+<li><code>test.yml</code> — pytest matrix on Linux + macOS (Apple Silicon) for Python 3.10 and 3.12</li>
+<li><code>wheels.yml</code> — <code>cibuildwheel</code> builds cp39–cp313 wheels for manylinux x86-64 and
+    macOS arm64, plus the sdist, and publishes to PyPI via <strong>trusted publishing</strong> on <code>v*</code> tags</li>
+<li><code>docs/TROUBLESHOOTING.md</code> — comprehensive troubleshooting guide</li>
+</ul>
+<h3 id="changed_4">Changed<a class="headerlink" href="#changed_4" title="Permanent link">¶</a></h3>
+<ul>
+<li>Tightened <code>MANIFEST.in</code> — sdist trimmed from ~4.8 MB to ~489 KB (excludes H2Pack
+  examples/extras and built artifacts; keeps only sources <code>setup.py</code> compiles)</li>
+<li>Wheels now bundle their native dependencies (<code>libgomp</code>, <code>libopenblas</code>, <code>libH2Pack</code>)
+  via delocate (macOS) / auditwheel (Linux), so they import without a system
+  Homebrew/OpenBLAS install</li>
+<li><code>_backend.py</code> loads bundled libraries from <code>_lib/</code> first, falling back to system libraries</li>
+<li>Rewrote the developer guide to reflect the current repo layout (correct paths, <code>tests/</code> at root,
+  <code>uv pip install</code>, accurate file tree)</li>
+<li>Simplified README.md; removed broken doc links (<code>CONTRIBUTING.md</code>, root-level <code>PACKAGING_GUIDE.md</code>)</li>
+<li>Updated <code>pyproject.toml</code> classifiers (<code>Development Status :: 4 - Beta</code>; added License,
+  Operating System, and Python 3.13) and fixed repository URLs (<code>tsne-h2pack</code> → <code>tsne-h2pack-python</code>)</li>
+<li>Linux install docs now include <code>liblapack-dev liblapacke-dev</code> (required by <code>setup.py</code>'s linker flags)</li>
+<li>Consolidated packaging docs (folded BUILD_STATUS.md, READY_FOR_PYPI.md, TESTPYPI_GUIDE.md
+  into <code>docs/PACKAGING_GUIDE.md</code>)</li>
+</ul>
+<h3 id="fixed_3">Fixed<a class="headerlink" href="#fixed_3" title="Permanent link">¶</a></h3>
+<ul>
+<li>macOS: added the SDK System library path so H2Pack links correctly</li>
+<li>P matrix construction when the affinity exponent is too negative</li>
+<li>macOS: set <code>KMP_DUPLICATE_LIB_OK</code> so the bundled <code>libgomp</code> and <code>libomp</code> coexist
+  in one process without OpenMP's "already initialized" abort</li>
+<li>Plumbed KL divergence through to <code>kl_divergence_</code>; hardened flaky k-NN/threading tests</li>
+</ul>
+<h2 id="300-2026-02-11-internal">[3.0.0] - 2026-02-11 (internal)<a class="headerlink" href="#300-2026-02-11-internal" title="Permanent link">¶</a></h2>
+<blockquote>
+<p>Note: This version was tagged internally but never uploaded to PyPI.</p>
+</blockquote>
+<h3 id="major-changes-breaking-release">🚀 Major Changes - Breaking Release<a class="headerlink" href="#major-changes-breaking-release" title="Permanent link">¶</a></h3>
+<h4 id="native-builds-for-all-platforms">Native Builds for All Platforms<a class="headerlink" href="#native-builds-for-all-platforms" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>BREAKING</strong>: Removed Docker/Colima backend (~1,400 lines of code)</li>
+<li><strong>NEW</strong>: Native C extension builds on macOS (Apple Silicon) and Linux</li>
+<li><strong>BREAKING</strong>: Intel Mac no longer supported in v3.0 (use v2.x or Rosetta 2)</li>
+<li>Requires Homebrew GCC + OpenBLAS on macOS</li>
+</ul>
+<h4 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">¶</a></h4>
+<ul>
+<li>Faster execution (no Docker overhead)</li>
+<li>Simpler setup (no Docker/Colima installation required)</li>
+<li>Native performance with OpenMP threading</li>
+</ul>
+<h3 id="technical-improvements">🔧 Technical Improvements<a class="headerlink" href="#technical-improvements" title="Permanent link">¶</a></h3>
+<h4 id="build-system">Build System<a class="headerlink" href="#build-system" title="Permanent link">¶</a></h4>
+<ul>
+<li>Fixed CC environment variable handling in <code>setup.py</code></li>
+<li>Fixed macOS SDK library path for System library</li>
+<li>Improved H2Pack library loading from <code>_lib/</code> directory</li>
+<li>Better compiler detection and validation</li>
+</ul>
+<h4 id="h2pack-threading">H2Pack Threading<a class="headerlink" href="#h2pack-threading" title="Permanent link">¶</a></h4>
+<ul>
+<li>Critical fix: Set <code>omp_set_num_threads()</code> before <code>H2P_init()</code></li>
+<li>H² Rebuild speedup: 1.04x → 4.69x</li>
+<li>H² Matvec speedup: 1.01x → 2.47x</li>
+<li>Overall optimization speedup: 2.06x → 3.54x (8 threads)</li>
+</ul>
+<h4 id="package-structure">Package Structure<a class="headerlink" href="#package-structure" title="Permanent link">¶</a></h4>
+<ul>
+<li>Created <code>tsne_h2pack/_lib/</code> for compiled extensions</li>
+<li>Proper packaging of <code>.so</code> and <code>.dylib</code> files</li>
+<li>Both development and packaged modes supported</li>
+</ul>
+<h3 id="distribution">📦 Distribution<a class="headerlink" href="#distribution" title="Permanent link">¶</a></h3>
+<ul>
+<li>Local sdist (4.6 MB) and macOS arm64 wheel (267 KB) build successfully</li>
+<li>PyPI upload deferred — see <code>docs/PACKAGING_GUIDE.md</code> for remaining work</li>
+<li>Thoroughly tested with 12K dataset smoke tests</li>
+</ul>
+<h3 id="testing">🧪 Testing<a class="headerlink" href="#testing" title="Permanent link">¶</a></h3>
+<ul>
+<li>Automated build script: <code>build_package.sh</code></li>
+<li>Automated installation test: <code>test_installation.sh</code></li>
+<li>12K dataset smoke test validation</li>
+<li>5K MNIST example working perfectly (5.2s)</li>
+</ul>
+<h3 id="documentation">📚 Documentation<a class="headerlink" href="#documentation" title="Permanent link">¶</a></h3>
+<ul>
+<li>Created <code>PACKAGING_GUIDE.md</code> - Detailed packaging guide</li>
+</ul>
+<h3 id="migration-from-v2x">🔄 Migration from v2.x<a class="headerlink" href="#migration-from-v2x" title="Permanent link">¶</a></h3>
+<h4 id="for-apple-silicon-users">For Apple Silicon Users<a class="headerlink" href="#for-apple-silicon-users" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Remove Docker-based installation</span>
+pip<span class="w"> </span>uninstall<span class="w"> </span>tsne-h2pack
+
+<span class="c1"># Install prerequisites</span>
+brew<span class="w"> </span>install<span class="w"> </span>gcc<span class="w"> </span>openblas
+
+<span class="c1"># Install v3.0.0</span>
+pip<span class="w"> </span>install<span class="w"> </span>tsne-h2pack
+</code></pre></div>
+<h4 id="for-intel-mac-users">For Intel Mac Users<a class="headerlink" href="#for-intel-mac-users" title="Permanent link">¶</a></h4>
+<ul>
+<li>v3.0 requires Apple Silicon (ARM64)</li>
+<li>Options:</li>
+<li>Use v2.x with Docker support</li>
+<li>Use Rosetta 2 to run ARM64 version</li>
+<li>Use Linux or remote server</li>
+</ul>
+<h3 id="known-issues">⚠️ Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">¶</a></h3>
+<ul>
+<li>macOS wheel shows version warning (cosmetic, works on macOS 12.0+)</li>
+<li>Default k-NN method requires <code>pip install pynndescent</code> or use <code>knn_method='exact'</code></li>
+</ul>
+<h3 id="requirements">🎯 Requirements<a class="headerlink" href="#requirements" title="Permanent link">¶</a></h3>
+<h4 id="macos-apple-silicon">macOS (Apple Silicon)<a class="headerlink" href="#macos-apple-silicon" title="Permanent link">¶</a></h4>
+<ul>
+<li>Homebrew GCC (gcc-15, gcc-14, gcc-13, or gcc-12)</li>
+<li>OpenBLAS library</li>
+<li>Python 3.8+</li>
+</ul>
+<h4 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">¶</a></h4>
+<ul>
+<li>GCC with OpenMP support</li>
+<li>OpenBLAS or other BLAS/LAPACK library</li>
+<li>Python 3.8+</li>
+</ul>
+<hr />
+<h2 id="200-2026-02-01">[2.0.0] - 2026-02-01<a class="headerlink" href="#200-2026-02-01" title="Permanent link">¶</a></h2>
+<h3 id="changed-unified-k-nn-interface">Changed - Unified k-NN Interface<a class="headerlink" href="#changed-unified-k-nn-interface" title="Permanent link">¶</a></h3>
+<h4 id="breaking-api-change">Breaking API Change<a class="headerlink" href="#breaking-api-change" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>BREAKING</strong>: Replaced <code>use_sklearn_knn</code> parameter with <code>knn_method</code></li>
+<li><strong>NEW</strong>: 5 k-NN methods available: 'pynndescent' (default), 'exact', 'balltree', 'faiss', 'annoy'</li>
+</ul>
+<h4 id="migration">Migration<a class="headerlink" href="#migration" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Old API (v1.x)</span>
+<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">use_sklearn_knn</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># New API (v2.0+)</span>
+<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">knn_method</span><span class="o">=</span><span class="s1">'exact'</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="added_3">Added<a class="headerlink" href="#added_3" title="Permanent link">¶</a></h3>
+<ul>
+<li>PyNNDescent as default k-NN method (96% accuracy, 10-100x faster)</li>
+<li>FAISS support for large datasets (&gt;50K samples)</li>
+<li>Annoy support for memory-constrained environments</li>
+<li>Comprehensive k-NN benchmarks and documentation</li>
+</ul>
+<h3 id="files">Files<a class="headerlink" href="#files" title="Permanent link">¶</a></h3>
+<ul>
+<li><code>tsne_h2pack/_knn_methods.py</code> - Unified k-NN interface</li>
+<li><code>docs/KNN_METHODS.md</code> - Complete k-NN guide</li>
+<li><code>examples/HNSW_BENCHMARK_RESULTS.md</code> - Performance benchmarks</li>
+</ul>
+<hr />
+<h2 id="100-initial-release">[1.0.0] - Initial Release<a class="headerlink" href="#100-initial-release" title="Permanent link">¶</a></h2>
+<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">¶</a></h3>
+<ul>
+<li>H2Pack acceleration for O(N log N) complexity</li>
+<li>Docker/Colima backend for macOS</li>
+<li>Native backend for Linux</li>
+<li>scikit-learn compatible API</li>
+<li>OpenMP parallelization</li>
+</ul>
+<hr />
+<h2 id="version-history-summary">Version History Summary<a class="headerlink" href="#version-history-summary" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>v3.3.1</strong> (2026-11-09): Python 3.10+ required, 3.10-3.14 tested in CI, 3.14 wheels</li>
+<li><strong>v3.3.0</strong> (2026-11-05): PCA initialization by default, benchmarks rerun on an Apple M5 Max, macOS wheels need macOS 15</li>
+<li><strong>v3.2.0</strong> (2026-10-07): Per-dimension H2 defaults, 3D speedups</li>
+<li><strong>v3.1.1</strong> (2026-09-20): Fix for the PyNNDescent self-neighbor bug of 3.1.0</li>
+<li><strong>v3.1.0</strong> (2026-09-20): First release on PyPI; optimization round, new benchmark suite</li>
+<li><strong>v3.0.1</strong> (2026-07-06): CI wheels, trusted publishing, packaging polish (not uploaded)</li>
+<li><strong>v3.0.0</strong> (2026-02-11): Native builds, Docker removed, P-matrix fix (not uploaded)</li>
+<li><strong>v2.0.0</strong> (2026-02-01): Unified k-NN interface, 5 methods</li>
+<li><strong>v1.0.0</strong>: Initial release with Docker backend</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../troubleshooting/" class="btn btn-neutral float-left" title="Troubleshooting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../citing/" class="btn btn-neutral float-right" title="Citing">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>&copy; Copyright 2026, tsne-h2pack contributors.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/xinxing02/tsne-h2pack-python" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../troubleshooting/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../citing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../javascripts/mathjax.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
