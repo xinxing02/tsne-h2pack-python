@@ -1,0 +1,4 @@
+[submodule "H2Pack"]
+	path = H2Pack
+	url = https://github.com/xinxing02/H2Pack.git
+	branch = tsne-h2pack

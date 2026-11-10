@@ -1,0 +1,39 @@
+# C source code (the part of the package built from C)
+recursive-include src *.c *.h
+recursive-include include *.h
+
+# H2Pack: include only what setup.py actually compiles against.
+# Skip H2Pack/{examples,extra,pyh2pack,lib,obj} and any built artifacts.
+recursive-include H2Pack/src *.c *.h *.make
+recursive-include H2Pack/include *.h
+recursive-include H2Pack/src/ASTER/include *.h
+prune H2Pack/src/ASTER/examples
+include H2Pack/LICENSE
+
+# Built binaries (the extension and libH2Pack.so) must NOT enter the sdist:
+# sdist users build from source, and a binary left over from a local build
+# would be copied verbatim into their site-packages. Wheels get them from
+# build_ext, which copies libH2Pack.so next to the compiled extension.
+recursive-exclude tsne_h2pack/_lib *.so *.dylib
+
+# Top-level project files
+include README.md
+include LICENSE
+include CHANGELOG.md
+include pyproject.toml
+
+# Documentation
+recursive-include docs *.md
+
+# Examples (a sample for users, not all of them)
+include examples/basic_example.py
+
+# Exclude anything that slipped through
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude __pycache__
+global-exclude *.o
+global-exclude *.a
+global-exclude .DS_Store
+global-exclude *~
+prune **/.git

@@ -1,0 +1,151 @@
+[build-system]
+requires = ["setuptools>=64", "wheel", "numpy>=1.20"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tsne-h2pack"
+version = "3.3.0"
+description = "High-performance t-SNE with H2Pack acceleration (sklearn compatible, native builds)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Xin Xing", email = "xxing02@gmail.com"}
+]
+keywords = ["machine-learning", "dimensionality-reduction", "tsne", "manifold-learning"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: C",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy>=1.20",
+    "scikit-learn>=1.0",
+    "scipy>=1.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov",
+    "black",
+    "flake8",
+]
+
+# Approximate k-NN methods (all optional). pynndescent 0.7 crashes in numba's parfors pass with
+# numba <= 0.60, the newest numba for Python 3.9, so 3.9 stays on pynndescent 0.6.
+pynndescent = ["pynndescent>=0.5.11; python_version >= '3.10'", "pynndescent>=0.5.11,<0.7; python_version < '3.10'"]
+faiss = ["faiss-cpu>=1.7.4"]  # CPU-only (GPU via manual install: pip install faiss-gpu)
+annoy = ["annoy>=1.17.0"]
+
+# Install all approximate k-NN methods
+knn = ["pynndescent>=0.5.11; python_version >= '3.10'", "pynndescent>=0.5.11,<0.7; python_version < '3.10'", "faiss-cpu>=1.7.4", "annoy>=1.17.0"]
+
+# All extras combined
+all = ["pynndescent>=0.5.11; python_version >= '3.10'", "pynndescent>=0.5.11,<0.7; python_version < '3.10'", "faiss-cpu>=1.7.4", "annoy>=1.17.0"]
+
+[project.urls]
+Homepage = "https://xinxing02.github.io/tsne-h2pack-python/"
+Documentation = "https://xinxing02.github.io/tsne-h2pack-python/"
+Repository = "https://github.com/xinxing02/tsne-h2pack-python"
+Issues = "https://github.com/xinxing02/tsne-h2pack-python/issues"
+Changelog = "https://github.com/xinxing02/tsne-h2pack-python/blob/main/CHANGELOG.md"
+
+[tool.setuptools]
+packages = ["tsne_h2pack", "tsne_h2pack._lib"]
+
+[tool.setuptools.package-data]
+tsne_h2pack = ["_lib/*.so", "_lib/*.dylib"]
+
+# ---------------------------------------------------------------------------
+# cibuildwheel configuration (used by .github/workflows/wheels.yml)
+# Docs: https://cibuildwheel.pypa.io/en/stable/options/
+# ---------------------------------------------------------------------------
+[tool.cibuildwheel]
+# Build wheels for every CPython that requires-python allows (3.9+); skip PyPy.
+build = "cp39-* cp310-* cp311-* cp312-* cp313-*"
+# Skip 32-bit and musllinux for now (limited demand, OpenBLAS install
+# is more involved on Alpine).
+skip = "*-win32 *-manylinux_i686 *musllinux*"
+
+# Run a smoke test against the installed wheel on every build.
+test-requires = "pytest pytest-timeout"
+# Smoke test only: prove the wheel imports and the native backend
+# loads. The full pytest matrix runs separately in the Test
+# workflow (.github/workflows/test.yml) where it doesn't have to
+# share a process with cibuildwheel's own toolchain.
+#
+# Why not pytest here too: pytest pulls in sklearn/numpy which
+# initialize libomp.dylib on macOS. We bundle libgomp.dylib (GNU)
+# via Homebrew GCC. When both load in the same process, OpenMP's
+# safety check aborts with "OMP Error #15: ... already initialized"
+# (SIGABRT, exit 134). Skipping pytest here sidesteps that.
+#
+# TOML basic strings (double-quoted) so we can use single quotes
+# inside the Python -c snippets without escaping.
+test-command = [
+    "python -c 'import tsne_h2pack; print(tsne_h2pack.__version__)'",
+    "python -c 'from tsne_h2pack._backend import get_backend; b=get_backend(); assert b.is_available()'",
+    "python -c 'import numpy as np; from tsne_h2pack import TSNE; Y=TSNE(n_components=2, perplexity=5, max_iter=50, knn_method=\"exact\", random_state=0).fit_transform(np.random.RandomState(0).randn(100, 10)); assert Y.shape==(100,2); print(\"fit_transform OK\")'",
+]
+
+# ---- Linux ----
+[tool.cibuildwheel.linux]
+# Rely on cibuildwheel v3.4.1's bundled manylinux_2_28 image defaults
+# (date-stamped tag, e.g. 2026.03.20-1). Older `latest` overrides were
+# rejected by Quay because that tag doesn't exist for these images.
+# Bump cibuildwheel itself to refresh the image reference.
+#
+# x86_64 only for now — aarch64 fails to build because H2Pack's
+# bundled ASTER SVE intrinsics (sve_intrin_wrapper.h) hit the
+# AArch64 SVE ABI rule "fields cannot have SVE type" with current
+# GCC. Re-enable once H2Pack guards SVE behind a USE_SVE flag.
+archs = ["x86_64"]
+# Install build-time deps inside the manylinux container.
+before-all = "yum install -y openblas-devel lapack-devel"
+# auditwheel repair (which cibuildwheel runs automatically) bundles
+# libopenblas, liblapacke, libgomp, and our libH2Pack.so into the wheel.
+
+[tool.cibuildwheel.linux.environment]
+# Use a portable CPU baseline rather than the build host's exact CPU.
+TSNE_H2PACK_MARCH = "x86-64-v3"
+
+# ---- macOS ----
+[tool.cibuildwheel.macos]
+archs = ["arm64"]   # Apple Silicon only (matches setup.py guard)
+# Install Homebrew GCC + OpenBLAS before building.
+before-all = "brew install gcc openblas"
+# delocate (run automatically by cibuildwheel) bundles libgomp.1.dylib,
+# libopenblas.0.dylib, and libH2Pack.so into the wheel.
+
+[tool.cibuildwheel.macos.environment]
+# 15.0 is the floor enforced by the bundled Homebrew libs (libgomp,
+# libgfortran, libopenblas, libquadmath, libomp) that delocate copies
+# into the wheel: on the macos-15 GitHub runners Homebrew's bottles are
+# built for 15.0, and delocate-wheel rejects any lower target. (GitHub
+# retired the macos-14 image, whose bottles allowed 14.0, on
+# 2026-11-02.) macOS 14 users build from the sdist instead.
+MACOSX_DEPLOYMENT_TARGET = "15.0"
+# Allow the LLVM OpenMP runtime to coexist with GNU's libgomp in the
+# same process. Our wheel ships both: libgomp because we build with
+# Homebrew GCC, and libomp because Homebrew's openblas-on-macOS
+# happens to link against it. When pytest/numpy/scipy initialize
+# OpenMP and we then init ours, llvm-omp's safety check trips
+# "OMP Error #15 ... already initialized" and SIGABRTs. This env
+# var (KMP_DUPLICATE_LIB_OK=TRUE) is the standard workaround
+# documented by Intel + recommended by numpy/scipy/sklearn for the
+# Mac multi-OMP scenario; it's safe in our case because both
+# runtimes implement the same v3.1 API.
+KMP_DUPLICATE_LIB_OK = "TRUE"

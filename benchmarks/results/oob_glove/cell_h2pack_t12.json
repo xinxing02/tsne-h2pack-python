@@ -1,0 +1,24 @@
+{
+ "library": "tsne-h2pack",
+ "wall": 126.06763437499467,
+ "knn": 75.47969007492065,
+ "n_iter": 1000,
+ "kl_self": 4.340800789646658,
+ "optimize": 38.238,
+ "breakdown": {
+  "attractive": 13.945,
+  "h2_rebuild": 13.017,
+  "h2_matvec": 10.081
+ },
+ "peak_rss_gb": 17.328414916992188,
+ "settings": "TSNE(n_jobs=threads, random_state=rep, max_iter=1000); defaults otherwise (pynndescent k-NN, perplexity 30, random init, learning_rate='auto')",
+ "kl": 5.936493280846289,
+ "knn_preservation": 0.14994000000000002,
+ "span": 222.88149857185243,
+ "dataset": "glove",
+ "n": 1183514,
+ "rep": 0,
+ "threads": 12,
+ "machine": "macOS-27.2-arm64-arm-64bit-Mach-O",
+ "finished": "2026-11-02 02:26:58"
+}

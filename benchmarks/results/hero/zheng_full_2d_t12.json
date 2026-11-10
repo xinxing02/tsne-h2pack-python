@@ -1,0 +1,16 @@
+{
+ "dataset": "zheng",
+ "n": 1306127,
+ "dim": 2,
+ "threads": 12,
+ "seed": 0,
+ "t_total": 106.04454241599888,
+ "t_knn": 59.924257040023804,
+ "t_rest": 46.12028537597507,
+ "numba_warmup": 7.317586582998047,
+ "kl_self_reported": 4.658411921744346,
+ "version": "3.2.0",
+ "machine": "macOS-27.2-arm64-arm-64bit-Mach-O",
+ "python": "3.13.3",
+ "started": "2026-11-02T02:43:54"
+}

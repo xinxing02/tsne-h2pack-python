@@ -1,0 +1,19 @@
+{
+ "library": "FIt-SNE on tsne-h2pack's k-NN graph",
+ "wall": 277.99627900100313,
+ "wall_fitsne_only": 160.43286587500188,
+ "knn": 102.59114004200092,
+ "t_P": 14.972273084000335,
+ "optimize": 158.54,
+ "n_iter": 1000,
+ "dataset": "glove",
+ "n": 1183514,
+ "rep": 0,
+ "threads": 8,
+ "finished": "2026-11-02 02:37:16",
+ "peak_rss_gb": NaN,
+ "settings": "FItSNE(X, max_iter=1000, nthreads=threads, rand_seed=rep, load_affinities='load'); P = perplexity-30 calibration (openTSNE) of tsne-h2pack's PyNNDescentKNN k=90 graph; PCA init and all other FIt-SNE defaults",
+ "kl": 5.933987761535317,
+ "knn_preservation": 0.14962,
+ "span": 220.46971622630383
+}

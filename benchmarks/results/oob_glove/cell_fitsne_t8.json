@@ -1,0 +1,31 @@
+{
+ "library": "FIt-SNE",
+ "wall": 358.20730491599534,
+ "n_iter": 1000,
+ "peak_rss_gb": 6.065093994140625,
+ "settings": "FItSNE(X, max_iter=1000, nthreads=threads, rand_seed=rep); defaults otherwise (Annoy k-NN n_trees=50, perplexity 30, PCA init, learning_rate='auto', max_step_norm=5)",
+ "optimize": 159.89,
+ "knn_and_P_lines": [
+  "Iteration 50 (50 iterations in 5.96 seconds), cost -0.907963",
+  "Iteration 100 (50 iterations in 6.13 seconds), cost -0.941026",
+  "Iteration 150 (50 iterations in 6.17 seconds), cost -0.940679",
+  "Iteration 200 (50 iterations in 6.26 seconds), cost -0.943171",
+  "Iteration 250 (50 iterations in 6.33 seconds), cost -0.940815",
+  "Iteration 300 (50 iterations in 6.39 seconds), cost 0.947369",
+  "Iteration 350 (50 iterations in 6.37 seconds), cost 0.877717",
+  "Iteration 400 (50 iterations in 6.47 seconds), cost 0.842821",
+  "Iteration 450 (50 iterations in 6.72 seconds), cost 0.818933",
+  "Iteration 500 (50 iterations in 7.02 seconds), cost 0.803186",
+  "Iteration 550 (50 iterations in 7.42 seconds), cost 0.790501",
+  "Iteration 600 (50 iterations in 7.91 seconds), cost 0.779065"
+ ],
+ "kl": 6.22608723508711,
+ "knn_preservation": 0.12358,
+ "span": 218.34452151721845,
+ "dataset": "glove",
+ "n": 1183514,
+ "rep": 0,
+ "threads": 8,
+ "machine": "macOS-27.2-arm64-arm-64bit-Mach-O",
+ "finished": "2026-11-02 02:24:35"
+}

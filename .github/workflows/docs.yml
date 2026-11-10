@@ -1,0 +1,24 @@
+name: Deploy docs
+
+# Builds the site and pushes it to the gh-pages branch, which GitHub Pages serves
+# (Settings > Pages > Source: "Deploy from a branch", branch gh-pages).
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['website/**', 'mkdocs.yml', 'tsne_h2pack/**', 'CHANGELOG.md', '.github/workflows/docs.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r website/requirements.txt
+      # Builds the site and force-pushes it to the gh-pages branch (no Actions artifact storage used).
+      - run: mkdocs gh-deploy --force --strict
