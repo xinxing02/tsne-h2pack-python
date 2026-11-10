@@ -12,7 +12,7 @@
 :   The `CC` environment variable points at Apple Clang. Run `unset CC` and rebuild.
 
 **pip tries to compile tsne-h2pack and the build fails**
-:   No wheel matches your platform or Python version, so pip fell back to the source distribution. Wheels exist for Linux x86-64 and Apple Silicon macOS with CPython 3.9–3.14. On those platforms with another Python version, install the build tools listed under [Building from source](installation.md#building-from-source).
+:   No wheel matches your platform or Python version, so pip fell back to the source distribution. Wheels exist for Linux x86-64 and Apple Silicon macOS with CPython 3.10–3.14. On those platforms with another Python version, install the build tools listed under [Building from source](installation.md#building-from-source).
 
 **Linux on ARM, Intel Mac, or native Windows**
 :   Not supported. Linux aarch64 does not build yet. Use Linux x86-64, an Apple Silicon Mac, or WSL2 on Windows.

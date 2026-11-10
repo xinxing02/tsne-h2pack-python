@@ -1,1 +1,1 @@
---8<-- "CHANGELOG.md:1:484"
+--8<-- "CHANGELOG.md:1:481"

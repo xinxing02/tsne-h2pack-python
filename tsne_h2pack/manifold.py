@@ -399,7 +399,7 @@ class TSNE:
             from sklearn.decomposition import PCA
             pca = PCA(n_components=self.n_components, svd_solver='randomized',
                       random_state=self.random_state)
-            # NumPy 2.0-2.2 on macOS (the newest NumPy for Python 3.9 / 3.10) raises
+            # NumPy 2.0-2.2 on macOS (2.2 is the newest NumPy for Python 3.10) raises
             # spurious divide/overflow/invalid warnings from the matmuls inside
             # scikit-learn's randomized SVD even when the result is exact. Silence
             # them here only, and check the result explicitly instead.

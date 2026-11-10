@@ -1,6 +1,6 @@
 # tsne-h2pack: High-Performance t-SNE with H2Pack Acceleration
 
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A high-performance, sklearn-compatible implementation of t-SNE with H2Pack acceleration for large-scale dimensionality reduction.
@@ -32,7 +32,7 @@ pip install tsne-h2pack
 ```
 
 Binary wheels are published for Linux x86-64 (manylinux) and macOS Apple Silicon
-(macOS 15+), CPython 3.9–3.14. On other platforms, including macOS 14, `pip` builds from the source
+(macOS 15+), CPython 3.10–3.14. On other platforms, including macOS 14, `pip` builds from the source
 distribution, which needs a C compiler and OpenBLAS — see [Prerequisites](#prerequisites).
 
 To install from a source checkout:

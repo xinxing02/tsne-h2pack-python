@@ -8,10 +8,10 @@ you don't build release artifacts by hand.
 
 - **PyPI**: https://pypi.org/project/tsne-h2pack/ — every release since 3.1.0 is built and
   uploaded by CI from a `v*` tag (trusted publishing, no API token).
-- **Artifacts per release** (13 files):
+- **Artifacts per release** (11 files):
   - sdist (~300 KB — binaries are excluded by `MANIFEST.in`)
-  - manylinux x86-64 wheels for cp39–cp314
-  - macOS arm64 wheels (`macosx_15_0_arm64`) for cp39–cp314
+  - manylinux x86-64 wheels for cp310–cp314
+  - macOS arm64 wheels (`macosx_15_0_arm64`) for cp310–cp314
 - **H2Pack** is a submodule pinned to the `tsne-h2pack` branch of the fork
   `xinxing02/H2Pack`. The commit it points at must be pushed there before CI can check it out.
 
@@ -112,7 +112,7 @@ git push origin vX.Y.Z
 
 The `wheels.yml` run for the tag builds every wheel again and, once all matrix jobs are
 green, the `publish` job uploads sdist + wheels to PyPI. Watch it under **Actions**;
-then check https://pypi.org/project/tsne-h2pack/ lists 13 files (12 wheels + sdist).
+then check https://pypi.org/project/tsne-h2pack/ lists 11 files (10 wheels + sdist).
 
 Smoke test against a TestPyPI install (dependencies come from real PyPI):
 ```bash
@@ -179,7 +179,7 @@ Documented here so they aren't mistaken for gaps:
 | macOS Intel | ⛔ | Unsupported since v3.0 (`setup.py` guards arm64); use Linux |
 | Windows | ⛔ | Use WSL2 |
 | musllinux (Alpine) | ⛔ | Limited demand; OpenBLAS setup is more involved |
-| CPython 3.8 | ⛔ | EOL since Oct 2024; `requires-python = ">=3.9"` after 3.3.0. On 3.8 the uv-managed interpreter's build flags break the GCC compile, and the pynndescent the resolver picks there is broken with its numba |
+| CPython 3.8, 3.9 | ⛔ | `requires-python = ">=3.10"` since 3.3.1. Both are end-of-life (3.8 in Oct 2024, 3.9 in Oct 2025), and their newest numpy / numba / pynndescent combinations are broken or untestable on macOS |
 | PyPy | ⛔ | C-extension, no PyPy wheels |
 
 ---

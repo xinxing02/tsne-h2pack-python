@@ -246,6 +246,6 @@ def skip_without_annoy():
     except ImportError:
         pytest.skip("Annoy not installed")
     # Below 3.13 a broken build either returns too few neighbors (GitHub's macos-15
-    # runner, Python 3.12) or segfaults (same runner, Python 3.9 / 3.11). Probe it once
+    # runner, Python 3.12) or segfaults (same runner, Python 3.11). Probe it once
     # in a child process, so a crash turns into a skip instead of killing pytest.
     _skip_if_annoy_broken()

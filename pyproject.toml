@@ -7,7 +7,7 @@ name = "tsne-h2pack"
 version = "3.3.1"
 description = "High-performance t-SNE with H2Pack acceleration (sklearn compatible, native builds)"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Xin Xing", email = "xxing02@gmail.com"}
@@ -21,7 +21,6 @@ classifiers = [
     "Operating System :: MacOS",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -45,17 +44,16 @@ dev = [
     "flake8",
 ]
 
-# Approximate k-NN methods (all optional). pynndescent 0.7 crashes in numba's parfors pass with
-# numba <= 0.60, the newest numba for Python 3.9, so 3.9 stays on pynndescent 0.6.
-pynndescent = ["pynndescent>=0.5.11; python_version >= '3.10'", "pynndescent>=0.5.11,<0.7; python_version < '3.10'"]
+# Approximate k-NN methods (all optional)
+pynndescent = ["pynndescent>=0.5.11"]
 faiss = ["faiss-cpu>=1.7.4"]  # CPU-only (GPU via manual install: pip install faiss-gpu)
 annoy = ["annoy>=1.17.0"]
 
 # Install all approximate k-NN methods
-knn = ["pynndescent>=0.5.11; python_version >= '3.10'", "pynndescent>=0.5.11,<0.7; python_version < '3.10'", "faiss-cpu>=1.7.4", "annoy>=1.17.0"]
+knn = ["pynndescent>=0.5.11", "faiss-cpu>=1.7.4", "annoy>=1.17.0"]
 
 # All extras combined
-all = ["pynndescent>=0.5.11; python_version >= '3.10'", "pynndescent>=0.5.11,<0.7; python_version < '3.10'", "faiss-cpu>=1.7.4", "annoy>=1.17.0"]
+all = ["pynndescent>=0.5.11", "faiss-cpu>=1.7.4", "annoy>=1.17.0"]
 
 [project.urls]
 Homepage = "https://xinxing02.github.io/tsne-h2pack-python/"
@@ -75,8 +73,8 @@ tsne_h2pack = ["_lib/*.so", "_lib/*.dylib"]
 # Docs: https://cibuildwheel.pypa.io/en/stable/options/
 # ---------------------------------------------------------------------------
 [tool.cibuildwheel]
-# Build wheels for every CPython that requires-python allows (3.9+); skip PyPy.
-build = "cp39-* cp310-* cp311-* cp312-* cp313-* cp314-*"
+# Build wheels for every CPython that requires-python allows (3.10+); skip PyPy.
+build = "cp310-* cp311-* cp312-* cp313-* cp314-*"
 # Skip 32-bit and musllinux for now (limited demand, OpenBLAS install
 # is more involved on Alpine).
 skip = "*-win32 *-manylinux_i686 *musllinux*"
@@ -84,7 +82,7 @@ skip = "*-win32 *-manylinux_i686 *musllinux*"
 # Run a smoke test against the installed wheel on every build.
 test-requires = "pytest pytest-timeout"
 # Test each wheel with the k-NN extra users install, so a dependency that resolves to a
-# broken version on one Python (pynndescent 0.7 with numba 0.60 on 3.9) fails the build.
+# broken version on one Python (as pynndescent 0.7 with numba 0.60 did on 3.9) fails the build.
 test-extras = ["pynndescent"]
 # Smoke test only: prove the wheel imports and the native backend
 # loads. The full pytest matrix runs separately in the Test
